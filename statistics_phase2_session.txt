@@ -1,10 +1,10 @@
-Citrine, interval:   60, t(53) = -8.67, p < 0.005
-Citrine, interval: 120, t(53) = -6.12, p < 0.005
-Citrine, interval: 180, t(52) = -6.01, p < 0.005
-Citrine, interval: 240, t(53) = -5.44, p < 0.005
-Citrine, interval: 300, t(53) = -4.32, p < 0.005
-Elia, interval:   60, t(36) = -5.50, p < 0.005
+Citrine, interval:   60, t(53) = -8.67, p < 0.0005
+Citrine, interval: 120, t(53) = -6.12, p < 0.0005
+Citrine, interval: 180, t(52) = -6.01, p < 0.0005
+Citrine, interval: 240, t(53) = -5.44, p < 0.0005
+Citrine, interval: 300, t(53) = -4.32, p < 0.0005
+Elia, interval:   60, t(36) = -5.50, p < 0.0005
 Elia, interval: 120, t(nan) = nan, p = nan
 Elia, interval: 180, t(nan) = nan, p = nan
 Elia, interval: 240, t(nan) = nan, p = nan
-Elia, interval: 300, t(41) = -3.99, p < 0.005
+Elia, interval: 300, t(41) = -3.99, p < 0.0005

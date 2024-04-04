@@ -1,5 +1,19 @@
 import pandas as pd
 
+def plot_nr(phase, index):
+    if phase == 1:
+        if index == 0: return 1
+        if index == 1: return 2
+        if index == 2: return 4
+        if index == 3: return 5
+        if index > 3: return 3
+
+    if phase == 2:
+        if index == 0: return 1
+        if index == 1: return 2
+        if index > 1: return 3
+
+
 
 def format_ttest_result_apa(ttest_result, alpha=0.05):
     statistic = ttest_result.statistic
@@ -25,6 +39,8 @@ def read_phase(phase):
     data = data.dropna()
     data = add_block_number(data)
     data = data.query('session > 0') #remove negative amount of drinking
+    data = data.query('overnight > 0')
+    data = data.query('total > 0')
     data = data.query('overnight < 300') # remove outliers
 
     if phase == 1:
