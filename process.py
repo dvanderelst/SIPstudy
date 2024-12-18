@@ -1,10 +1,14 @@
 import numpy
+import numpy as np
+import natsort
+
 from Library import Stats
 from Library import Settings
 from Library import Utils
 from Library import Legend
 from scipy.stats import ttest_ind
 from matplotlib import pyplot as plt
+from scipy.stats import kstest, norm
 import matplotlib
 
 ##########################
@@ -32,7 +36,10 @@ for dependent_variable in ['session', 'overnight', 'total']:
     max_plot_range = numpy.max(data[dependent_variable]) + 10
 
     cats = list(data.subject.unique())
+    cats = natsort.natsorted(cats)
+
     intervals = list(data.interval.unique())
+    if np.nan in intervals: intervals.remove(np.nan)
 
     plt.figure(figsize=figure_size)
 
@@ -62,22 +69,37 @@ for dependent_variable in ['session', 'overnight', 'total']:
             if interval != "baseline":
                 current_color = colors[interval]
                 mn_day = numpy.mean(selected_data.days)
-                predicted = Stats.predict(regression_result, mn_day)
-                shifted_residuals = predicted + residuals
+                prediction_mean = Stats.predict(regression_result, mn_day)
+                prediction_std =  regression_result['prstd']
+                shifted_residuals = residuals + prediction_mean
+
                 session_data = selected_data[dependent_variable].values
+
+                print(np.std(shifted_residuals), prediction_std)
+
+                try:
+                    session_data = session_data[~np.isnan(session_data)]
+                    stat, ks_result_p = kstest(session_data, 'norm', args=(prediction_mean, prediction_std))
+                except ValueError as ve:
+                    stat = 'NaN'
+                    ks_result_p = 1
+
+                formatted1 = Utils.format_ktest_result_apa(stat, ks_result_p, alpha_level)
+
                 tt_result = ttest_ind(session_data, shifted_residuals)
                 tt_result_p = tt_result[1]
-                formatted = Utils.format_ttest_result_apa(tt_result, alpha_level)
+                formatted2 = Utils.format_ttest_result_apa(tt_result, alpha_level)
+
                 marker = '+'
                 size = 150
-                if tt_result_p < alpha_level: marker = '*'
-                mn_session = numpy.mean(selected_data[dependent_variable])
+                if ks_result_p < alpha_level: marker = '*'
+                mn_session = numpy.nanmean(selected_data[dependent_variable])
                 plt.scatter(mn_day, mn_session, marker=marker, s=150, color=current_color)
                 if interval == '60': interval = '  ' + interval
                 custom_legend.add_entry(label=interval + ' ms', color=current_color, marker='o', linestyle='')
                 #print(interval, predicted, mn_session, max_day)
-                print(cat_name, interval, formatted)
-                statistics_line = f'{cat_name}, interval: {interval}, {formatted}\n'
+                print(cat_name, interval, formatted1, formatted2)
+                statistics_line = f'{cat_name}, interval: {interval}, {formatted1}, {formatted2}\n'
                 tests_output.write(statistics_line)
 
         custom_legend.add_entry(label=f'Average, p > {alpha_level}', color='black', marker='+', linestyle='')
@@ -125,3 +147,9 @@ for dependent_variable in ['session', 'overnight', 'total']:
     # plt.figure()
     # plt.hist(residuals, color=colors['baseline'])
     # plt.show()
+
+
+output_file = f"phase_{phase}_averages.xlsx"
+grps = data.groupby(['subject', 'interval'])
+mn = grps.session.agg(['mean', 'std'])
+mn.to_excel(output_file, index=True)

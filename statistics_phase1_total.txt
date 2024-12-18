@@ -1,20 +1,20 @@
-Bernie, interval:   60, t(52) = -0.88, p = 0.38
-Bernie, interval: 120, t(53) = -0.60, p = 0.55
-Bernie, interval: 180, t(53) = 1.45, p = 0.15
-Bernie, interval: 240, t(53) = 0.52, p = 0.61
-Bernie, interval: 300, t(51) = -1.17, p = 0.25
-Citrine, interval:   60, t(53) = 1.39, p = 0.17
-Citrine, interval: 120, t(52) = -1.41, p = 0.16
-Citrine, interval: 180, t(53) = -2.33, p = 0.02
-Citrine, interval: 240, t(50) = 0.32, p = 0.75
-Citrine, interval: 300, t(51) = -1.87, p = 0.07
-Elia, interval:   60, t(65) = -8.67, p < 0.0005
-Elia, interval: 120, t(64) = -4.05, p < 0.0005
-Elia, interval: 180, t(65) = -8.48, p < 0.0005
-Elia, interval: 240, t(65) = -11.11, p < 0.0005
-Elia, interval: 300, t(64) = -10.47, p < 0.0005
-Minerva, interval:   60, t(59) = -2.32, p = 0.02
-Minerva, interval: 120, t(59) = -0.68, p = 0.50
-Minerva, interval: 180, t(58) = -0.87, p = 0.39
-Minerva, interval: 240, t(59) = -1.20, p = 0.23
-Minerva, interval: 300, t(59) = 0.91, p = 0.37
+Bernie, interval:   60, k = 0.50, p = 0.19, t(56) = -0.86, p = 0.39
+Bernie, interval: 120, k = 0.31, p = 0.63, t(57) = -0.58, p = 0.57
+Bernie, interval: 180, k = 0.38, p = 0.37, t(57) = 1.51, p = 0.14
+Bernie, interval: 240, k = 0.32, p = 0.59, t(57) = 0.53, p = 0.60
+Bernie, interval: 300, k = 0.65, p = 0.09, t(55) = -1.24, p = 0.22
+Citrine, interval:   60, k = 0.35, p = 0.45, t(54) = 1.40, p = 0.17
+Citrine, interval: 120, k = 0.62, p = 0.05, t(53) = -1.42, p = 0.16
+Citrine, interval: 180, k = 0.52, p = 0.08, t(54) = -2.35, p = 0.02
+Citrine, interval: 240, k = 0.50, p = 0.50, t(51) = 0.31, p = 0.76
+Citrine, interval: 300, k = 0.78, p = 0.02, t(52) = -1.88, p = 0.07
+Elia, interval:   60, k = 0.99, p < 0.0005, t(65) = -8.67, p < 0.0005
+Elia, interval: 120, k = 0.75, p = 0.01, t(64) = -4.06, p < 0.0005
+Elia, interval: 180, k = 0.99, p < 0.0005, t(65) = -8.48, p < 0.0005
+Elia, interval: 240, k = 1.00, p < 0.0005, t(65) = -11.11, p < 0.0005
+Elia, interval: 300, k = 1.00, p < 0.0005, t(65) = -10.58, p < 0.0005
+Minerva, interval:   60, k = 0.50, p = 0.11, t(59) = -2.32, p = 0.02
+Minerva, interval: 120, k = 0.48, p = 0.15, t(59) = -0.68, p = 0.50
+Minerva, interval: 180, k = 0.34, p = 0.64, t(58) = -0.88, p = 0.38
+Minerva, interval: 240, k = 0.59, p = 0.03, t(59) = -1.20, p = 0.23
+Minerva, interval: 300, k = 0.38, p = 0.35, t(59) = 0.91, p = 0.37

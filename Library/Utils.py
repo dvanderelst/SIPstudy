@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 
 def plot_nr(phase, index):
     if phase == 1:
@@ -13,6 +14,15 @@ def plot_nr(phase, index):
         if index == 1: return 2
         if index > 1: return 3
 
+
+def format_ktest_result_apa(statistic, pvalue, alpha=0.05):
+    if statistic == 'NaN': return f"k = NaN, p = NaN"
+    if pvalue < alpha:
+        formatted_pvalue = "p < " + str(alpha)
+    else:
+        formatted_pvalue = f"p = {pvalue:.2f}"
+    formatted_output = f"k = {statistic:.2f}, {formatted_pvalue}"
+    return formatted_output
 
 
 def format_ttest_result_apa(ttest_result, alpha=0.05):
@@ -36,12 +46,26 @@ def read_phase(phase):
     data['date'] = pd.to_datetime(data['date'])  # Convert 'date' column to datetime
     earliest_date = data['date'].min()  # Find the earliest date
     data['days'] = (data['date'] - earliest_date).dt.days  # Calculate days since earliest date
-    data = data.dropna()
-    data = add_block_number(data)
-    data = data.query('session > 0') #remove negative amount of drinking
-    data = data.query('overnight > 0')
-    data = data.query('total > 0')
-    data = data.query('overnight < 300') # remove outliers
+
+    # Original DataFrame
+    original_data = pd.DataFrame(data)
+    #data = data.dropna()
+    #data = add_block_number(data)
+    #data = data.query('session > 0') #remove negative amount of drinking
+    #data = data.query('overnight > 0')
+    #data = data.query('total > 0')
+
+    data.loc[data['session'] <= 0, 'session'] = np.nan
+    data.loc[data['overnight'] <= 0, 'overnight'] = np.nan
+    data.loc[data['total'] <= 0, 'total'] = np.nan
+
+    data.loc[data['overnight'] > 300, 'total'] = np.nan
+    data.loc[data['overnight'] > 300, 'overnight'] = np.nan
+
+    # Print removed rows
+    #removed_data = original_data[~original_data.index.isin(data.index)]
+    #print("Removed rows:")
+    #print(removed_data)
 
     if phase == 1:
         cutoff_date = pd.to_datetime('7-3-23', format='%m-%d-%y')
@@ -55,8 +79,6 @@ def read_phase(phase):
         cutoff_date = pd.to_datetime('8-13-23', format='%m-%d-%y')
         data2 = data.loc[(data['subject'] == 'Elia') & (data['date'] > cutoff_date)]
         data = pd.concat([data1, data2])
-
-
 
     return data
 
