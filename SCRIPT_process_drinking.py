@@ -150,7 +150,7 @@ for dependent_variable in ['session', 'overnight', 'total']:
     # plt.show()
 
 
-output_file = f"phase_{phase}_averages.xlsx"
+output_file = f"{output_folder}phase_{phase}_averages.xlsx"
 grps = data.groupby(['subject', 'interval'])
 mn = grps.session.agg(['mean', 'std'])
 mn.to_excel(output_file, index=True)
