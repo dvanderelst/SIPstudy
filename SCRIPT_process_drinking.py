@@ -14,6 +14,7 @@ import matplotlib
 ##########################
 phase = 2
 alpha_level = 0.0005
+output_folder = 'drinking_output/'
 ##########################
 
 for dependent_variable in ['session', 'overnight', 'total']:
@@ -43,7 +44,7 @@ for dependent_variable in ['session', 'overnight', 'total']:
 
     plt.figure(figsize=figure_size)
 
-    tests_output = open(f'statistics_phase{phase}_{dependent_variable}.txt', 'w')
+    tests_output = open(f'{output_folder}statistics_phase{phase}_{dependent_variable}.txt', 'w')
 
     for plot_index, cat_name in enumerate(cats):
         plot_nr = Utils.plot_nr(phase=phase, index=plot_index)
@@ -138,7 +139,7 @@ for dependent_variable in ['session', 'overnight', 'total']:
     custom_legend.draw_legend('upper left')
     plt.tight_layout()
 
-    output_file = f"phase_{phase}_{dependent_variable}.png"
+    output_file = f"{output_folder}phase_{phase}_{dependent_variable}.png"
 
     plt.savefig(output_file, dpi=300)
     plt.show()

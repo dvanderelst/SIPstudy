@@ -37,7 +37,7 @@ def format_ttest_result_apa(ttest_result, alpha=0.05):
     return formatted_output
 
 def read_phase(phase):
-    data = pd.read_csv('SIP_data.csv', index_col=0)
+    data = pd.read_csv('data/SIP_data.csv', index_col=0)
     data = data.iloc[:, [0, 1, 2, 3, 4, 6, 7]]
     new_variables = ['interval', 'subject', 'date', 'weight', 'session', 'total', 'overnight']
     data.columns = new_variables
