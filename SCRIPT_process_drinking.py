@@ -12,7 +12,7 @@ from scipy.stats import kstest, norm
 import matplotlib
 
 ##########################
-phase = 2
+phase = 1
 alpha_level = 0.0005
 output_folder = 'drinking_output/'
 ##########################
