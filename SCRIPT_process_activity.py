@@ -1,0 +1,107 @@
+import matplotlib
+from matplotlib import pyplot as plt
+
+from Library import BehaviorAnalysis
+from Library import Settings
+from Library import Utils
+
+matplotlib.rcParams['font.family'] = 'serif'
+output_folder = 'behavior_output/'
+
+data = BehaviorAnalysis.read_data()
+
+intervention_data = data.query('Intervention == True')
+baseline_data = data.query('Intervention == False')
+
+grouped = intervention_data.groupby(['Feeder_Interval', 'TimeToFeeding'], observed=False)
+proportions = grouped.Active.mean()
+proportions = proportions.reset_index()
+proportions = proportions.dropna()
+
+intervals = intervention_data.Feeder_Interval.unique()
+intervals.sort()
+baseline_activity = baseline_data.Active.mean()
+intervention60 = intervention_data.query('Feeder_Interval == 60')
+intervention120 = intervention_data.query('Feeder_Interval == 120')
+intervention180 = intervention_data.query('Feeder_Interval == 180')
+intervention240 = intervention_data.query('Feeder_Interval == 240')
+intervention300 = intervention_data.query('Feeder_Interval == 300')
+
+average_cut_off = ((60 * 2/3) + (120 * 2/3) + (180 * 2/3) + (240 * 2/3) + (300 * 2/3)) / 5
+
+result_full = BehaviorAnalysis.piecewise_linear(intervention_data, split_time=120, full=True)
+
+result60 = BehaviorAnalysis.piecewise_linear(intervention60, split_time=60*2/3)
+result120 = BehaviorAnalysis.piecewise_linear(intervention120, split_time=120*2/3)
+result180 = BehaviorAnalysis.piecewise_linear(intervention180, split_time=180*2/3)
+result240 = BehaviorAnalysis.piecewise_linear(intervention240, split_time=240*2/3)
+result300 = BehaviorAnalysis.piecewise_linear(intervention300, split_time=300*2/3)
+
+print(result60['pvalue1'], result60['pvalue2'])
+print(result120['pvalue1'], result120['pvalue2'])
+print(result180['pvalue1'], result180['pvalue2'])
+print(result240['pvalue1'], result240['pvalue2'])
+print(result300['pvalue1'], result300['pvalue2'])
+
+r60p1 = Utils.format_pvalue(result60['pvalue1'])
+r60p2 = Utils.format_pvalue(result60['pvalue2'])
+r120p1 = Utils.format_pvalue(result120['pvalue1'])
+r120p2 = Utils.format_pvalue(result120['pvalue2'])
+r180p1 = Utils.format_pvalue(result180['pvalue1'])
+r180p2 = Utils.format_pvalue(result180['pvalue2'])
+r240p1 = Utils.format_pvalue(result240['pvalue1'])
+r240p2 = Utils.format_pvalue(result240['pvalue2'])
+r300p1 = Utils.format_pvalue(result300['pvalue1'])
+r300p2 = Utils.format_pvalue(result300['pvalue2'])
+
+
+prediction1 = result_full['prediction1']
+prediction2 = result_full['prediction2']
+pvalue1 = result_full['pvalue1']
+pvalue2 = result_full['pvalue2']
+
+pvalue1 = Utils.format_pvalue(pvalue1)
+pvalue2 = Utils.format_pvalue(pvalue2)
+
+
+#%%
+
+plt.figure()
+
+colors = Settings.colors
+
+plt.plot(prediction1['TimeToFeeding'], prediction1['Predicted'], label='Predicted Activity (First Half)', linewidth=2, color='black', markersize=10, marker='$↓$', zorder=10)
+plt.plot(prediction2['TimeToFeeding'], prediction2['Predicted'], label='Predicted Activity (Second Half)', linewidth=2, color='black', marker='$↑$', markersize=10, zorder=10)
+plt.gca().invert_xaxis()
+plt.axhline(y=baseline_activity, color='gray', linestyle='--', label='Baseline Activity', zorder=0)
+
+intervals.sort()
+for index, interval in enumerate(intervals):
+    selected_data = proportions.query('Feeder_Interval == @interval')
+    current_color = colors[str(interval)]
+    plt.plot(selected_data['TimeToFeeding'], selected_data['Active'], alpha=1, label=str(interval) + ' s', linewidth=2, color=current_color, marker = '.')
+
+# Add all the formatted p-values
+plt.text(120, 0.75, '60s:   ' + r60p2, fontsize=12, color=colors['60'])
+plt.text(120, 0.70, '120s: ' + r120p2, fontsize=12, color=colors['120'])
+plt.text(120, 0.65, '180s: ' + r180p2, fontsize=12, color=colors['180'])
+plt.text(120, 0.60, '240s: ' + r240p2, fontsize=12, color=colors['240'])
+plt.text(120, 0.55, '300s: ' + r300p2, fontsize=12, color=colors['300'])
+
+ax = plt.gca()
+ax.set_facecolor('#F1F0EA')
+
+plt.ylim(0, 1)
+plt.xlabel('Time to Feeding (s)')
+plt.ylabel('Activity (Proportion)')
+
+plt.text(225, 0.45, pvalue1, fontsize=12, color='black')
+plt.text(45, 0.20, pvalue2, fontsize=12, color='black')
+
+plt.xticks(range(0, 300, 45))
+plt.grid()
+plt.legend(ncol=3)
+plt.tight_layout()
+plt.savefig(output_folder + 'activity.png', dpi=300)
+plt.savefig(output_folder + 'activity.pdf')
+plt.show()
