@@ -17,6 +17,8 @@ alpha_level = 0.0005
 output_folder = 'drinking_output/'
 ##########################
 
+max_days_log = {}
+
 for dependent_variable in ['session', 'overnight', 'total']:
 
     if phase == 1:
@@ -52,6 +54,7 @@ for dependent_variable in ['session', 'overnight', 'total']:
         selected_cat = data.query('subject ==@cat_name')
         selected_cat.loc[:, 'days'] = selected_cat['days'] - numpy.min(selected_cat['days'])
         max_day = numpy.max(selected_cat.days)
+        max_days_log[cat_name] = max_day
         base_line_data = selected_cat.query('interval == "baseline"')
         regression_result = Stats.regression(base_line_data, dependent_variable, alpha_level)
         residuals = regression_result['residuals']
@@ -73,14 +76,13 @@ for dependent_variable in ['session', 'overnight', 'total']:
                 prediction_mean = Stats.predict(regression_result, mn_day)
                 prediction_std =  regression_result['prstd']
                 shifted_residuals = residuals + prediction_mean
-
+                shifted_residuals_std = np.std(shifted_residuals)
                 session_data = selected_data[dependent_variable].values
-
                 print(np.std(shifted_residuals), prediction_std)
 
                 try:
                     session_data = session_data[~np.isnan(session_data)]
-                    stat, ks_result_p = kstest(session_data, 'norm', args=(prediction_mean, prediction_std))
+                    stat, ks_result_p = kstest(session_data, 'norm', args=(prediction_mean, shifted_residuals_std))
                 except ValueError as ve:
                     stat = 'NaN'
                     ks_result_p = 1
@@ -106,7 +108,7 @@ for dependent_variable in ['session', 'overnight', 'total']:
         custom_legend.add_entry(label=f'Average, p > {alpha_level}', color='black', marker='+', linestyle='')
         custom_legend.add_entry(label=f'Average, p < {alpha_level}', color='black', marker='*', linestyle='')
         custom_legend.add_entry(label='Baseline Regression', color='gray', marker='None', linestyle='--')
-        custom_legend.add_entry(label='Prediction conf.', color='gray', marker='s', linestyle='None', alpha=0.1)
+        custom_legend.add_entry(label='Observation conf.', color='gray', marker='s', linestyle='None', alpha=0.1)
 
         Stats.plot_line(regression_result, colors['baseline'])
         plt.ylim(-10, max_plot_range)
@@ -154,3 +156,5 @@ output_file = f"{output_folder}phase_{phase}_averages.xlsx"
 grps = data.groupby(['subject', 'interval'])
 mn = grps.session.agg(['mean', 'std'])
 mn.to_excel(output_file, index=True)
+
+print(max_days_log)

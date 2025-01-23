@@ -60,7 +60,6 @@ def read_phase(phase):
     new_variables = ['interval', 'subject', 'date', 'weight', 'session', 'total', 'overnight']
     data.columns = new_variables
     data['interval'] = data['interval'].replace('NA (baseline or weekend)', 'baseline')
-    data['date'] = pd.to_datetime(data['date'])
     data['date'] = pd.to_datetime(data['date'])  # Convert 'date' column to datetime
     earliest_date = data['date'].min()  # Find the earliest date
     data['days'] = (data['date'] - earliest_date).dt.days  # Calculate days since earliest date
