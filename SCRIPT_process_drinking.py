@@ -97,7 +97,7 @@ for dependent_variable in ['session', 'overnight', 'total']:
                 mn_session = numpy.nanmean(selected_data[dependent_variable])
                 plt.scatter(mn_day, mn_session, marker=marker, s=150, color=current_color)
                 if interval == '60': interval = '  ' + interval
-                custom_legend.add_entry(label=interval + ' ms', color=current_color, marker='o', linestyle='')
+                custom_legend.add_entry(label=interval + 's', color=current_color, marker='o', linestyle='')
                 #print(interval, predicted, mn_session, max_day)
                 print(cat_name, interval, formatted1, formatted2)
                 statistics_line = f'{cat_name}, interval: {interval}, {formatted1}, {formatted2}\n'

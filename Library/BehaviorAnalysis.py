@@ -5,6 +5,12 @@ from Library import PredictionData
 
 
 
+def logit_model(data, model_description):
+    model = smf.logit(model_description, data=data)
+    result = model.fit()
+    summary = result.summary()
+    return result, summary
+
 def read_data():
     data = pd.read_csv('data/SIP_observations.csv', index_col=0)
     data = data.query('action_cat != "OutofView"')
@@ -30,7 +36,9 @@ def read_data():
     data["loc_cat"] = data["Location"].apply(lambda x: "Feeder_Area" if x in ["Feeder", "5", "6"] else
     "Out of View" if x == "Out of View" else "Non-Feeder")
 
-    data['AtFeeder'] = data['loc_cat'] == 'Feeder_Area'
+    data['AtFeeder'] = (data['loc_cat'] == 'Feeder_Area') * 1
+
+    data['date'] = pd.to_datetime(data['date'])
 
     return data
 

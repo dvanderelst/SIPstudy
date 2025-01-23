@@ -37,14 +37,14 @@ def pvalue_to_marker(p, levels=None, markers=None):
     return "n.s."
 
 
-def format_pvalue(p, levels=None):
+def format_pvalue(p, levels=None, subscript = ''):
     if levels is None:
         levels = [0.001, 0.01, 0.05, 0.1]
     levels = sorted(levels)
     for level in levels:
         if p < level:
-            return f"P < {level}"
-    return f"P = {p:.2f}"
+            return f"$p_{subscript} < {level}$"
+    return f"$p_{subscript} = {p:.2f}$"
 
 def format_ttest_result_apa(ttest_result, alpha=0.05):
     statistic = ttest_result.statistic
