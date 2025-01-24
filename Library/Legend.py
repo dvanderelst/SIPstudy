@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 
+
 class CustomLegend:
     def __init__(self):
         self.entries = []

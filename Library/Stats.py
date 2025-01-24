@@ -1,10 +1,8 @@
+# from statsmodels.sandbox.regression.predstd import wls_prediction_std
 
 from matplotlib import pyplot as plt
-from statsmodels.sandbox.regression.predstd import wls_prediction_std
 import numpy as np
 import statsmodels.api as sm
-
-
 
 
 def regression(data, column, alpha):
@@ -19,8 +17,8 @@ def regression(data, column, alpha):
     intercept = results.params[0]
     residuals = results.resid
     predictions = results.get_prediction(x_with_const).summary_frame(alpha)
-    prstd, iv_l, iv_u = wls_prediction_std(results)
-    prstd = np.mean(prstd) #take the mean of the prstd
+    # prstd, iv_l, iv_u = wls_prediction_std(results)
+    # prstd = np.mean(prstd) #take the mean of the prstd
     # Create a dictionary with the results
     results_dict = {
         'x': x,
@@ -33,9 +31,7 @@ def regression(data, column, alpha):
         'residuals': residuals,
         'model': model,
         'results': results,
-        'predictions': predictions,
-        'df': x_with_const,
-        'prstd': prstd
+        'predictions': predictions
     }
 
     return results_dict
@@ -48,9 +44,10 @@ def plot_line(results, color):
     x_values = np.linspace(min(x), max(x), 100)
     y_values = results['slope'] * x_values + results['intercept']
     plt.plot(x_values, y_values, color=color, linestyle=linestyle)
-    predictions = results['predictions']
-    df = results['df']
-    plt.fill_between(df[:,1], predictions['obs_ci_lower'], predictions['obs_ci_upper'], alpha=.1, color=color)
+    # predictions = results['predictions']
+    # df = results['df']
+    # plt.fill_between(df[:, 1], predictions['obs_ci_lower'], predictions['obs_ci_upper'], alpha=.1, color=color)
+
 
 def predict(results, day):
     slope = results['slope']
