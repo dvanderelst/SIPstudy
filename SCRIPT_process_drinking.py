@@ -1,7 +1,7 @@
 import numpy
 import numpy as np
 import natsort
-
+from scipy.stats import probplot
 from Library import Stats
 from Library import Settings
 from Library import Utils
@@ -18,7 +18,7 @@ output_folder = 'drinking_output/'
 ##########################
 
 max_days_log = {}
-
+all_residuals = []
 for dependent_variable in ['session', 'overnight', 'total']:
 
     if phase == 1:
@@ -58,7 +58,7 @@ for dependent_variable in ['session', 'overnight', 'total']:
         base_line_data = selected_cat.query('interval == "baseline"')
         regression_result = Stats.regression(base_line_data, dependent_variable, alpha_level)
         residuals = regression_result['residuals']
-
+        all_residuals.extend(residuals)
         custom_legend = Legend.CustomLegend()
         for interval in intervals:
             selected_data = selected_cat.query('interval == @interval')
@@ -157,4 +157,10 @@ grps = data.groupby(['subject', 'interval'])
 mn = grps.session.agg(['mean', 'std'])
 mn.to_excel(output_file, index=True)
 
-print(max_days_log)
+all_residuals = np.array(all_residuals)
+# Create Q-Q plot
+fig, ax = plt.subplots()
+probplot(all_residuals, dist="norm", plot=ax)  # Compare to normal distribution
+ax.get_lines()[1].set_color("red")   # Optional: Set the trend line color
+plt.title("Q-Q Plot")
+plt.show()

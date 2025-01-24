@@ -1,4 +1,4 @@
-
+from scipy.stats import probplot
 import numpy
 import numpy as np
 import natsort
@@ -36,7 +36,7 @@ intervals = intervals[~np.isnan(intervals)]
 
 plt.figure(figsize=figure_size)
 tests_output = open(f'{output_folder}statistics_steps.txt', 'w')
-
+all_residuals = []
 for plot_index, cat_name in enumerate(cats):
     if plot_index == 0: plot_nr = 1
     if plot_index == 1: plot_nr = 2
@@ -59,6 +59,7 @@ for plot_index, cat_name in enumerate(cats):
     base_line_data = selected_cat.query('Intervention == False')
     regression_result = Stats.regression(base_line_data, dependent_variable, alpha_level)
     residuals = regression_result['residuals']
+    all_residuals.extend(residuals)
 
     custom_legend = Legend.CustomLegend()
     for interval in intervals:
@@ -150,11 +151,15 @@ output_file = f"{output_folder}steps.png"
 plt.savefig(output_file, dpi=300)
 plt.show()
 tests_output.close()
+all_residuals = np.array(all_residuals)
 
-#     # plt.figure()
-#     # plt.hist(residuals, color=colors['baseline'])
-#     # plt.show()
-#
+# Create Q-Q plot
+fig, ax = plt.subplots()
+probplot(all_residuals, dist="norm", plot=ax)  # Compare to normal distribution
+ax.get_lines()[1].set_color("red")   # Optional: Set the trend line color
+plt.title("Q-Q Plot")
+plt.show()
+
 #
 # # output_file = f"{output_folder}phase_{phase}_averages.xlsx"
 # # grps = data.groupby(['subject', 'interval'])
