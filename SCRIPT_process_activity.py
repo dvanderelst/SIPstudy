@@ -2,9 +2,10 @@ import matplotlib
 import pandas as pd
 from matplotlib import pyplot as plt
 
-from Library import BehaviorAnalysis
+import Library.FormatUtils
+from Library import AnalysisBehavior
 from Library import Settings
-from Library import Utils
+from Library import AnalysisDrink
 
 split_ratio = 2/3
 last_n_sessions = 10000
@@ -56,16 +57,16 @@ print(result180['pvalue1'], result180['pvalue2'])
 print(result240['pvalue1'], result240['pvalue2'])
 print(result300['pvalue1'], result300['pvalue2'])
 
-r60p1 = Utils.format_pvalue(result60['pvalue1'], subscript='1')
-r60p2 = Utils.format_pvalue(result60['pvalue2'], subscript='2')
-r120p1 = Utils.format_pvalue(result120['pvalue1'], subscript='1')
-r120p2 = Utils.format_pvalue(result120['pvalue2'], subscript='2')
-r180p1 = Utils.format_pvalue(result180['pvalue1'], subscript='1')
-r180p2 = Utils.format_pvalue(result180['pvalue2'], subscript='2')
-r240p1 = Utils.format_pvalue(result240['pvalue1'], subscript='1')
-r240p2 = Utils.format_pvalue(result240['pvalue2'], subscript='2')
-r300p1 = Utils.format_pvalue(result300['pvalue1'], subscript='1')
-r300p2 = Utils.format_pvalue(result300['pvalue2'], subscript='2')
+r60p1 = Library.FormatUtils.format_pvalue(result60['pvalue1'], subscript='1')
+r60p2 = Library.FormatUtils.format_pvalue(result60['pvalue2'], subscript='2')
+r120p1 = Library.FormatUtils.format_pvalue(result120['pvalue1'], subscript='1')
+r120p2 = Library.FormatUtils.format_pvalue(result120['pvalue2'], subscript='2')
+r180p1 = Library.FormatUtils.format_pvalue(result180['pvalue1'], subscript='1')
+r180p2 = Library.FormatUtils.format_pvalue(result180['pvalue2'], subscript='2')
+r240p1 = Library.FormatUtils.format_pvalue(result240['pvalue1'], subscript='1')
+r240p2 = Library.FormatUtils.format_pvalue(result240['pvalue2'], subscript='2')
+r300p1 = Library.FormatUtils.format_pvalue(result300['pvalue1'], subscript='1')
+r300p2 = Library.FormatUtils.format_pvalue(result300['pvalue2'], subscript='2')
 
 
 prediction1 = result_full['prediction1']
@@ -73,8 +74,8 @@ prediction2 = result_full['prediction2']
 pvalue1 = result_full['pvalue1']
 pvalue2 = result_full['pvalue2']
 
-pvalue1 = Utils.format_pvalue(pvalue1, subscript='1')
-pvalue2 = Utils.format_pvalue(pvalue2, subscript='2')
+pvalue1 = Library.FormatUtils.format_pvalue(pvalue1, subscript='1')
+pvalue2 = Library.FormatUtils.format_pvalue(pvalue2, subscript='2')
 
 
 #%%

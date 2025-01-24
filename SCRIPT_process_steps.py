@@ -3,11 +3,12 @@ import numpy
 import numpy as np
 import natsort
 
+import Library.FormatUtils
 from Library import Stats
 from Library import Settings
-from Library import Utils
+from Library import AnalysisDrink
 from Library import Legend
-from Library import StepAnalysis
+from Library import AnalysisStep
 from scipy.stats import ttest_ind
 from matplotlib import pyplot as plt
 from scipy.stats import kstest, norm
@@ -92,11 +93,11 @@ for plot_index, cat_name in enumerate(cats):
                 stat = 'NaN'
                 ks_result_p = 1
 
-            formatted1 = Utils.format_ktest_result_apa(stat, ks_result_p, alpha_level)
+            formatted1 = Library.FormatUtils.format_ktest_result_apa(stat, ks_result_p, alpha_level)
 
             tt_result = ttest_ind(session_data, shifted_residuals)
             tt_result_p = tt_result[1]
-            formatted2 = Utils.format_ttest_result_apa(tt_result, alpha_level)
+            formatted2 = Library.FormatUtils.format_ttest_result_apa(tt_result, alpha_level)
 
             marker = '+'
             size = 150

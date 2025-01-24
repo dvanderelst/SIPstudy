@@ -44,7 +44,7 @@ def read_data():
 
 def piecewise_linear(intervention_data, split_time, normalized=False, full=False, use_actual=True):
     split_time = split_time * 1.0
-    prediction_data = PredictionData.make_data(full=full)
+    prediction_data = make_data(full=full)
 
     selected = intervention_data.copy()
     selected['TimeToFeedingNormalized'] = selected['TimeToFeeding'] / 15
@@ -131,3 +131,22 @@ def compute_transition_matrix(data):
 
         if same_cat and same_interval: transition_counts[previous_state, current_state] += 1
     return transition_counts / np.sum(transition_counts, axis=1)[:, None]
+
+
+def make_data(full=True):
+    cats = 'Bernie', 'Citrine', 'Minerva', 'Elia'
+    intervals = [60, 120, 180, 240, 300]
+    Subject = []
+    Feeder_Interval = []
+    TimeToFeeding = []
+    for cat in cats:
+        for interval in intervals:
+            time_to_feedings = list(range(0, interval + 15, 15))
+            if full: time_to_feedings = list(range(0, 300 + 15, 15))
+            for time_to_feeding in time_to_feedings:
+                Subject.append(cat)
+                Feeder_Interval.append(interval)
+                TimeToFeeding.append(time_to_feeding)
+
+    data = pd.DataFrame({'Subject': Subject, 'Feeder_Interval': Feeder_Interval, 'TimeToFeeding': TimeToFeeding})
+    return data
