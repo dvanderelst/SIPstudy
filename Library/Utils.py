@@ -24,15 +24,33 @@ def format_ktest_result_apa(statistic, pvalue, alpha=0.05):
     formatted_output = f"k = {statistic:.2f}, {formatted_pvalue}"
     return formatted_output
 
+def pvalue_to_marker(p, levels=None, markers=None):
+    if levels is None:
+        levels = [0.001, 0.01, 0.05, 0.1]
+    if markers is None:
+        markers = ["***", "**", "*", "."]
+    if len(levels) != len(markers):
+        raise ValueError("Levels and markers must have the same length.")
+    for level, marker in zip(levels, markers):
+        if p < level:
+            return marker
+    return "n.s."
+
+
+def format_pvalue(p, levels=None, subscript = ''):
+    if levels is None:
+        levels = [0.001, 0.01, 0.05, 0.1]
+    levels = sorted(levels)
+    for level in levels:
+        if p < level:
+            return f"$p_{subscript} < {level}$"
+    return f"$p_{subscript} = {p:.2f}$"
 
 def format_ttest_result_apa(ttest_result, alpha=0.05):
     statistic = ttest_result.statistic
     pvalue = ttest_result.pvalue
     df = ttest_result.df
-    if pvalue < alpha:
-        formatted_pvalue = "p < " + str(alpha)
-    else:
-        formatted_pvalue = f"p = {pvalue:.2f}"
+    formatted_pvalue = format_pvalue(pvalue, [alpha])
     formatted_output = f"t({df:.0f}) = {statistic:.2f}, {formatted_pvalue}"
     return formatted_output
 
@@ -42,7 +60,6 @@ def read_phase(phase):
     new_variables = ['interval', 'subject', 'date', 'weight', 'session', 'total', 'overnight']
     data.columns = new_variables
     data['interval'] = data['interval'].replace('NA (baseline or weekend)', 'baseline')
-    data['date'] = pd.to_datetime(data['date'])
     data['date'] = pd.to_datetime(data['date'])  # Convert 'date' column to datetime
     earliest_date = data['date'].min()  # Find the earliest date
     data['days'] = (data['date'] - earliest_date).dt.days  # Calculate days since earliest date
