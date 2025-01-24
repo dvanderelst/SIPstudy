@@ -16,13 +16,19 @@ import matplotlib
 
 ##########################
 phase = 1
-alpha_level = 0.0005
+alpha_level = 0.01
 output_folder = 'drinking_output/'
 ##########################
 
 max_days_log = {}
+
+tests_output = open(f'{output_folder}statistics.txt', 'w')
+
 for phase in [1, 2]:
     for dependent_variable in ['session', 'overnight', 'total']:
+        print(f"+ Phase: {phase}, dependent_variable: {dependent_variable}")
+        title_line = f"\n\nPhase: {phase}, Dependent Variable: {dependent_variable}\n\n"
+        tests_output.write(title_line)
 
         figure_size = (12, 8)
         nr_rows = 2
@@ -49,9 +55,10 @@ for phase in [1, 2]:
         if np.nan in intervals: intervals.remove(np.nan)
 
         plt.figure(figsize=figure_size)
-        tests_output = open(f'{output_folder}statistics_phase{phase}_{dependent_variable}.txt', 'w')
+
 
         for plot_index, cat_name in enumerate(cats):
+            print(f"++ Processing Cat {cat_name}")
 
             # Run the regression on the baseline data
             selected_cat = data.query('subject ==@cat_name')
@@ -67,6 +74,7 @@ for phase in [1, 2]:
             custom_legend = Legend.CustomLegend()
 
             for interval in intervals:
+                print(f"+++ Processing Interval {interval}")
                 selected_data = selected_cat.query('interval == @interval')
                 transparency = 1
                 size = 50
@@ -84,6 +92,8 @@ for phase in [1, 2]:
                     # Get the prediction errors
                     prediction = Stats.predict(regression_result, selected_data.days)
                     prediction_errors = selected_data[dependent_variable] - prediction
+                    prediction_errors = prediction_errors[~np.isnan(prediction_errors)]
+
 
                     # Compare two empirical distributions
                     stat, ks_result_p = kstest(residuals, prediction_errors)
@@ -137,12 +147,12 @@ for phase in [1, 2]:
 
         plt.savefig(output_file, dpi=300)
         plt.show()
-        tests_output.close()
 
     output_file = f"{output_folder}phase_{phase}_averages.xlsx"
     grps = data.groupby(['subject', 'interval'])
     mn = grps.session.agg(['mean', 'std'])
     mn.to_excel(output_file, index=True)
 
+tests_output.close()
 print(max_days_log)
 
