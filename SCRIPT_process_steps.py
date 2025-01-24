@@ -1,4 +1,4 @@
-from scipy.stats import probplot
+
 import numpy
 import numpy as np
 import natsort
@@ -6,16 +6,15 @@ import natsort
 import Library.FormatUtils
 from Library import Stats
 from Library import Settings
-from Library import AnalysisDrink
 from Library import Legend
 from Library import AnalysisStep
-from scipy.stats import ttest_ind
+
 from matplotlib import pyplot as plt
-from scipy.stats import kstest, norm
+from scipy.stats import ks_2samp
 import matplotlib
 
 ##########################
-alpha_level = 0.0005
+alpha_level = 0.01
 output_folder = 'steps_output/'
 dependent_variable = 'steps'
 figure_size = (12, 8)
@@ -27,7 +26,7 @@ max_day_range = 91
 
 matplotlib.rcParams['font.family'] = 'serif'
 colors = Settings.colors
-data = StepAnalysis.read_data()
+data = AnalysisStep.read_data()
 
 cats = list(data.subject.unique())
 cats = natsort.natsorted(cats)
@@ -37,7 +36,8 @@ intervals = intervals[~np.isnan(intervals)]
 
 plt.figure(figsize=figure_size)
 tests_output = open(f'{output_folder}statistics_steps.txt', 'w')
-all_residuals = []
+
+
 for plot_index, cat_name in enumerate(cats):
     if plot_index == 0: plot_nr = 1
     if plot_index == 1: plot_nr = 2
@@ -60,7 +60,6 @@ for plot_index, cat_name in enumerate(cats):
     base_line_data = selected_cat.query('Intervention == False')
     regression_result = Stats.regression(base_line_data, dependent_variable, alpha_level)
     residuals = regression_result['residuals']
-    all_residuals.extend(residuals)
 
     custom_legend = Legend.CustomLegend()
     for interval in intervals:
@@ -79,25 +78,13 @@ for plot_index, cat_name in enumerate(cats):
         if interval > 0:
             current_color = colors[interval_str]
             mn_day = numpy.mean(selected_interval_data.days)
-            prediction_mean = Stats.predict(regression_result, mn_day)
-            prediction_std = regression_result['prstd']
-            shifted_residuals = residuals + prediction_mean
-            shifted_residuals_std = np.std(shifted_residuals)
-            session_data = selected_interval_data[dependent_variable].values
-            print(shifted_residuals_std, prediction_std)
 
-            try:
-                session_data = session_data[~np.isnan(session_data)]
-                stat, ks_result_p = kstest(session_data, 'norm', args=(prediction_mean, shifted_residuals_std))
-            except ValueError as ve:
-                stat = 'NaN'
-                ks_result_p = 1
+            prediction = Stats.predict(regression_result, selected_interval_data.days)
+            prediction_errors = selected_interval_data[dependent_variable] - prediction
+            prediction_errors = prediction_errors[~np.isnan(prediction_errors)]
 
-            formatted1 = Library.FormatUtils.format_ktest_result_apa(stat, ks_result_p, alpha_level)
-
-            tt_result = ttest_ind(session_data, shifted_residuals)
-            tt_result_p = tt_result[1]
-            formatted2 = Library.FormatUtils.format_ttest_result_apa(tt_result, alpha_level)
+            stat, ks_result_p = ks_2samp(residuals, prediction_errors)
+            formatted = Library.FormatUtils.format_ktest_result_apa(stat, ks_result_p, alpha_level)
 
             marker = '+'
             size = 150
@@ -107,14 +94,12 @@ for plot_index, cat_name in enumerate(cats):
             if interval == '60': interval = '  ' + interval
             custom_legend.add_entry(label=interval_str + 's', color=current_color, marker='o', linestyle='')
             #print(interval, predicted, mn_session, max_day)
-            print(cat_name, interval, formatted1, formatted2)
-            statistics_line = f'{cat_name}, interval: {interval}, {formatted1}, {formatted2}\n'
+            statistics_line = f'{cat_name}, interval: {interval}, {formatted}\n'
             tests_output.write(statistics_line)
 
     custom_legend.add_entry(label=f'Average, p > {alpha_level}', color='black', marker='+', linestyle='')
     custom_legend.add_entry(label=f'Average, p < {alpha_level}', color='black', marker='*', linestyle='')
     custom_legend.add_entry(label='Baseline Regression', color='gray', marker='None', linestyle='--')
-    custom_legend.add_entry(label='Observation conf.', color='gray', marker='s', linestyle='None', alpha=0.1)
 
     Stats.plot_line(regression_result, colors['baseline'])
     if cat_name in ['Bernie', 'Citrine']: plt.ylim(0, 30)
@@ -147,22 +132,12 @@ plt.subplot(2, 3, 3)
 plt.axis('off')
 custom_legend.draw_legend('upper left')
 plt.tight_layout()
-#
+
 output_file = f"{output_folder}steps.png"
 plt.savefig(output_file, dpi=300)
+
+output_file = f"{output_folder}steps.pdf"
+plt.savefig(output_file)
+
 plt.show()
 tests_output.close()
-all_residuals = np.array(all_residuals)
-
-# Create Q-Q plot
-fig, ax = plt.subplots()
-probplot(all_residuals, dist="norm", plot=ax)  # Compare to normal distribution
-ax.get_lines()[1].set_color("red")   # Optional: Set the trend line color
-plt.title("Q-Q Plot")
-plt.show()
-
-#
-# # output_file = f"{output_folder}phase_{phase}_averages.xlsx"
-# # grps = data.groupby(['subject', 'interval'])
-# # mn = grps.session.agg(['mean', 'std'])
-# # mn.to_excel(output_file, index=True)

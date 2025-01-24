@@ -8,9 +8,7 @@ from Library import Stats
 from Library import Settings
 from Library import AnalysisDrink
 from Library import Legend
-from scipy.stats import ttest_ind
 from matplotlib import pyplot as plt
-from scipy.stats import kstest, norm
 from scipy.stats import ks_2samp
 import matplotlib
 
@@ -96,7 +94,7 @@ for phase in [1, 2]:
 
 
                     # Compare two empirical distributions
-                    stat, ks_result_p = kstest(residuals, prediction_errors)
+                    stat, ks_result_p = ks_2samp(residuals, prediction_errors)
                     formatted = FormatUtils.format_ktest_result_apa(stat, ks_result_p, alpha_level)
                     if ks_result_p < alpha_level: marker = '*'
                     mn_session = numpy.nanmean(selected_data[dependent_variable])
@@ -144,8 +142,11 @@ for phase in [1, 2]:
         plt.tight_layout()
 
         output_file = f"{output_folder}phase_{phase}_{dependent_variable}.png"
-
         plt.savefig(output_file, dpi=300)
+
+        output_file = f"{output_folder}phase_{phase}_{dependent_variable}.pdf"
+        plt.savefig(output_file)
+
         plt.show()
 
     output_file = f"{output_folder}phase_{phase}_averages.xlsx"

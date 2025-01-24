@@ -4,12 +4,12 @@ from matplotlib import pyplot as plt
 import Library.FormatUtils
 from Library import AnalysisBehavior
 from Library import Settings
-from Library import AnalysisDrink
+
 
 matplotlib.rcParams['font.family'] = 'serif'
 output_folder = 'behavior_output/'
 
-data = BehaviorAnalysis.read_data()
+data = AnalysisBehavior.read_data()
 
 intervention_data = data.query('Intervention == True')
 baseline_data = data.query('Intervention == False')
@@ -25,7 +25,7 @@ intervals = intervention_data.Feeder_Interval.unique()
 intervals.sort()
 
 model_description = 'AtFeeder ~ C(Subject) + C(Feeder_Interval) + TimeToFeeding'
-result, summary = BehaviorAnalysis.logit_model(data, model_description)
+result, summary = AnalysisBehavior.logit_model(data, model_description)
 
 p60 = result.pvalues['C(Feeder_Interval)[T.60]']
 p120 = result.pvalues['C(Feeder_Interval)[T.120]']
@@ -41,7 +41,7 @@ pvalue300 = Library.FormatUtils.format_pvalue(p300)
 
 # Does time at feeder change with feeder interval
 model_description = 'AtFeeder ~ C(Subject) + Feeder_Interval + TimeToFeeding'
-result_interval, summary_interval = BehaviorAnalysis.logit_model(intervention_data, model_description)
+result_interval, summary_interval = AnalysisBehavior.logit_model(intervention_data, model_description)
 p_feeder_interval = result_interval.pvalues['Feeder_Interval']
 p_feeder_interval = Library.FormatUtils.format_pvalue(p_feeder_interval)
 p_feeder_interval_text = f'Interval, {p_feeder_interval}'

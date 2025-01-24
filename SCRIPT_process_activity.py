@@ -1,11 +1,10 @@
 import matplotlib
-import pandas as pd
-from matplotlib import pyplot as plt
 
-import Library.FormatUtils
+from matplotlib import pyplot as plt
+from Library import FormatUtils
 from Library import AnalysisBehavior
 from Library import Settings
-from Library import AnalysisDrink
+
 
 split_ratio = 2/3
 last_n_sessions = 10000
@@ -13,7 +12,7 @@ last_n_sessions = 10000
 matplotlib.rcParams['font.family'] = 'serif'
 output_folder = 'behavior_output/'
 
-data = BehaviorAnalysis.read_data()
+data = AnalysisBehavior.read_data()
 
 
 # Calculate increasing session number (days since first date)
@@ -43,13 +42,13 @@ intervention300 = intervention_data.query('Feeder_Interval == 300')
 
 average_cut_off = ((60 * split_ratio) + (120 * split_ratio) + (180 * split_ratio) + (240 * split_ratio) + (300 * split_ratio)) / 5
 
-result_full = BehaviorAnalysis.piecewise_linear(intervention_data, split_time=average_cut_off, full=False, use_actual=True)
+result_full = AnalysisBehavior.piecewise_linear(intervention_data, split_time=average_cut_off, full=False, use_actual=True)
 
-result60 = BehaviorAnalysis.piecewise_linear(intervention60, split_time=60*split_ratio)
-result120 = BehaviorAnalysis.piecewise_linear(intervention120, split_time=120*split_ratio)
-result180 = BehaviorAnalysis.piecewise_linear(intervention180, split_time=180*split_ratio)
-result240 = BehaviorAnalysis.piecewise_linear(intervention240, split_time=240*split_ratio)
-result300 = BehaviorAnalysis.piecewise_linear(intervention300, split_time=300*split_ratio)
+result60 = AnalysisBehavior.piecewise_linear(intervention60, split_time=60*split_ratio)
+result120 = AnalysisBehavior.piecewise_linear(intervention120, split_time=120*split_ratio)
+result180 = AnalysisBehavior.piecewise_linear(intervention180, split_time=180*split_ratio)
+result240 = AnalysisBehavior.piecewise_linear(intervention240, split_time=240*split_ratio)
+result300 = AnalysisBehavior.piecewise_linear(intervention300, split_time=300*split_ratio)
 
 print(result60['pvalue1'], result60['pvalue2'])
 print(result120['pvalue1'], result120['pvalue2'])
@@ -57,25 +56,24 @@ print(result180['pvalue1'], result180['pvalue2'])
 print(result240['pvalue1'], result240['pvalue2'])
 print(result300['pvalue1'], result300['pvalue2'])
 
-r60p1 = Library.FormatUtils.format_pvalue(result60['pvalue1'], subscript='1')
-r60p2 = Library.FormatUtils.format_pvalue(result60['pvalue2'], subscript='2')
-r120p1 = Library.FormatUtils.format_pvalue(result120['pvalue1'], subscript='1')
-r120p2 = Library.FormatUtils.format_pvalue(result120['pvalue2'], subscript='2')
-r180p1 = Library.FormatUtils.format_pvalue(result180['pvalue1'], subscript='1')
-r180p2 = Library.FormatUtils.format_pvalue(result180['pvalue2'], subscript='2')
-r240p1 = Library.FormatUtils.format_pvalue(result240['pvalue1'], subscript='1')
-r240p2 = Library.FormatUtils.format_pvalue(result240['pvalue2'], subscript='2')
-r300p1 = Library.FormatUtils.format_pvalue(result300['pvalue1'], subscript='1')
-r300p2 = Library.FormatUtils.format_pvalue(result300['pvalue2'], subscript='2')
-
+r60p1 = FormatUtils.format_pvalue(result60['pvalue1'], subscript='1')
+r60p2 = FormatUtils.format_pvalue(result60['pvalue2'], subscript='2')
+r120p1 = FormatUtils.format_pvalue(result120['pvalue1'], subscript='1')
+r120p2 = FormatUtils.format_pvalue(result120['pvalue2'], subscript='2')
+r180p1 = FormatUtils.format_pvalue(result180['pvalue1'], subscript='1')
+r180p2 = FormatUtils.format_pvalue(result180['pvalue2'], subscript='2')
+r240p1 = FormatUtils.format_pvalue(result240['pvalue1'], subscript='1')
+r240p2 = FormatUtils.format_pvalue(result240['pvalue2'], subscript='2')
+r300p1 =FormatUtils.format_pvalue(result300['pvalue1'], subscript='1')
+r300p2 = FormatUtils.format_pvalue(result300['pvalue2'], subscript='2')
 
 prediction1 = result_full['prediction1']
 prediction2 = result_full['prediction2']
 pvalue1 = result_full['pvalue1']
 pvalue2 = result_full['pvalue2']
 
-pvalue1 = Library.FormatUtils.format_pvalue(pvalue1, subscript='1')
-pvalue2 = Library.FormatUtils.format_pvalue(pvalue2, subscript='2')
+pvalue1 = FormatUtils.format_pvalue(pvalue1, subscript='1')
+pvalue2 = FormatUtils.format_pvalue(pvalue2, subscript='2')
 
 
 #%%
