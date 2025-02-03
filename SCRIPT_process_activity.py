@@ -42,7 +42,7 @@ intervention300 = intervention_data.query('Feeder_Interval == 300')
 
 average_cut_off = ((60 * split_ratio) + (120 * split_ratio) + (180 * split_ratio) + (240 * split_ratio) + (300 * split_ratio)) / 5
 
-result_full = AnalysisBehavior.piecewise_linear(intervention_data, split_time=average_cut_off, full=False, use_actual=True)
+#result_full = AnalysisBehavior.piecewise_linear(intervention_data, split_time=average_cut_off, full=False, use_actual=True)
 
 result60 = AnalysisBehavior.piecewise_linear(intervention60, split_time=60*split_ratio)
 result120 = AnalysisBehavior.piecewise_linear(intervention120, split_time=120*split_ratio)
@@ -67,13 +67,13 @@ r240p2 = FormatUtils.format_pvalue(result240['pvalue2'], subscript='2')
 r300p1 =FormatUtils.format_pvalue(result300['pvalue1'], subscript='1')
 r300p2 = FormatUtils.format_pvalue(result300['pvalue2'], subscript='2')
 
-prediction1 = result_full['prediction1']
-prediction2 = result_full['prediction2']
-pvalue1 = result_full['pvalue1']
-pvalue2 = result_full['pvalue2']
+#prediction1 = result_full['prediction1']
+#prediction2 = result_full['prediction2']
+#pvalue1 = result_full['pvalue1']
+#pvalue2 = result_full['pvalue2']
 
-pvalue1 = FormatUtils.format_pvalue(pvalue1, subscript='1')
-pvalue2 = FormatUtils.format_pvalue(pvalue2, subscript='2')
+#pvalue1 = FormatUtils.format_pvalue(pvalue1, subscript='1')
+#pvalue2 = FormatUtils.format_pvalue(pvalue2, subscript='2')
 
 
 #%%
@@ -82,8 +82,8 @@ plt.figure()
 
 colors = Settings.colors
 
-plt.plot(prediction1['TimeToFeeding'], prediction1['Predicted'], label='Predicted Activity (First Half)', linewidth=2, color='black', markersize=10, marker='$↓$', zorder=10)
-plt.plot(prediction2['TimeToFeeding'], prediction2['Predicted'], label='Predicted Activity (Second Half)', linewidth=2, color='black', marker='$↑$', markersize=10, zorder=10)
+#plt.plot(prediction1['TimeToFeeding'], prediction1['Predicted'], label='Predicted Activity (First Half)', linewidth=2, color='black', markersize=10, marker='$↓$', zorder=10)
+#plt.plot(prediction2['TimeToFeeding'], prediction2['Predicted'], label='Predicted Activity (Second Half)', linewidth=2, color='black', marker='$↑$', markersize=10, zorder=10)
 plt.gca().invert_xaxis()
 plt.axhline(y=baseline_activity, color='gray', linestyle='--', label='Baseline Activity', zorder=0)
 
@@ -115,8 +115,8 @@ plt.ylim(0, 1)
 plt.xlabel('Time to Feeding (s)')
 plt.ylabel('Activity (Proportion)')
 
-plt.text(225, 0.50, pvalue1, fontsize=12, color='black')
-plt.text(45, 0.20, pvalue2, fontsize=12, color='black')
+#plt.text(225, 0.50, pvalue1, fontsize=12, color='black')
+#plt.text(45, 0.20, pvalue2, fontsize=12, color='black')
 
 plt.xticks(range(0, 300, 45))
 plt.grid()
