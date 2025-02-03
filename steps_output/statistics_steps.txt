@@ -4,7 +4,7 @@ Bernie, interval: 180.0, k = 0.50, p = 0.15
 Bernie, interval: 240.0, k = 0.21, p = 0.95
 Bernie, interval: 300.0, k = 0.64, p = 0.02
 Citrine, interval: 60.0, k = 0.50, p = 0.56
-Citrine, interval: 120.0, k = 0.81, p < 0.01
+Citrine, interval: 120.0, k = 0.81, p = 0.01
 Citrine, interval: 180.0, k = 0.52, p = 0.12
 Citrine, interval: 240.0, k = 0.48, p = 0.18
 Citrine, interval: 300.0, k = 0.25, p = 0.88

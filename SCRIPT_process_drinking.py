@@ -14,7 +14,7 @@ import matplotlib
 
 ##########################
 phase = 1
-alpha_level = 0.01
+alpha_level = 0.001
 output_folder = 'drinking_output/'
 ##########################
 
@@ -106,8 +106,8 @@ for phase in [1, 2]:
                     statistics_line = f'{cat_name}, interval: {interval}, {formatted}\n'
                     tests_output.write(statistics_line)
 
-            custom_legend.add_entry(label=f'Average, p > {alpha_level}', color='black', marker='+', linestyle='')
-            custom_legend.add_entry(label=f'Average, p < {alpha_level}', color='black', marker='*', linestyle='')
+            custom_legend.add_entry(label=f'Interval mean, $p$ > {alpha_level}', color='black', marker='+', linestyle='')
+            custom_legend.add_entry(label=f'Interval mean, $p$ < {alpha_level}', color='black', marker='*', linestyle='')
             custom_legend.add_entry(label='Baseline Regression', color='gray', marker='None', linestyle='--')
 
             Stats.plot_line(regression_result, colors['baseline'])

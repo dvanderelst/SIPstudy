@@ -14,7 +14,7 @@ from scipy.stats import ks_2samp
 import matplotlib
 
 ##########################
-alpha_level = 0.01
+alpha_level = 0.001
 output_folder = 'steps_output/'
 dependent_variable = 'steps'
 figure_size = (12, 8)
@@ -97,8 +97,8 @@ for plot_index, cat_name in enumerate(cats):
             statistics_line = f'{cat_name}, interval: {interval}, {formatted}\n'
             tests_output.write(statistics_line)
 
-    custom_legend.add_entry(label=f'Average, p > {alpha_level}', color='black', marker='+', linestyle='')
-    custom_legend.add_entry(label=f'Average, p < {alpha_level}', color='black', marker='*', linestyle='')
+    custom_legend.add_entry(label=f'Interval mean, $p$ > {alpha_level}', color='black', marker='+', linestyle='')
+    custom_legend.add_entry(label=f'Interval mean, $p$ < {alpha_level}', color='black', marker='*', linestyle='')
     custom_legend.add_entry(label='Baseline Regression', color='gray', marker='None', linestyle='--')
 
     Stats.plot_line(regression_result, colors['baseline'])

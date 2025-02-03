@@ -26,7 +26,7 @@ intervals.sort()
 
 model_description = 'AtFeeder ~ C(Subject) + C(Feeder_Interval) + TimeToFeeding'
 result, summary = AnalysisBehavior.logit_model(data, model_description)
-
+#%%
 p60 = result.pvalues['C(Feeder_Interval)[T.60]']
 p120 = result.pvalues['C(Feeder_Interval)[T.120]']
 p180 = result.pvalues['C(Feeder_Interval)[T.180]']
