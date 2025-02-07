@@ -1,3 +1,5 @@
+import math
+
 def format_ktest_result_apa(statistic, pvalue, alpha=0.05):
     if statistic == 'NaN': return f"k = NaN, p = NaN"
     if pvalue < alpha:
@@ -21,14 +23,21 @@ def pvalue_to_marker(p, levels=None, markers=None):
     return "n.s."
 
 
-def format_pvalue(p, levels=None, subscript = ''):
+def format_pvalue(p, slope=None, levels=None, subscript = ''):
+    # Get sign of slope
+    sign = ' (+)'
+    if slope is None:
+        sign = ''
+    else:
+        if slope < 0: sign = ' (-)'
+
     if levels is None:
         levels = [0.001, 0.01, 0.05, 0.1]
     levels = sorted(levels)
     for level in levels:
         if p < level:
-            return f"$p_{subscript} < {level}$"
-    return f"$p_{subscript} = {p:.2f}$"
+            return f"$p_{subscript}{sign} < {level}$"
+    return f"$p_{subscript}{sign} = {p:.2f}$"
 
 
 def format_ttest_result_apa(ttest_result, alpha=0.05):
