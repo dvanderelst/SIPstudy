@@ -1,4 +1,5 @@
 import matplotlib
+import seaborn as sns
 from matplotlib import pyplot as plt
 from Library import FormatUtils
 from Library import AnalysisBehavior
@@ -26,7 +27,8 @@ intervals = intervention_data.Feeder_Interval.unique()
 intervals.sort()
 
 model_description = 'AtFeeder ~ C(Subject) + C(Feeder_Interval) + TimeSinceFeeding'
-result, summary = AnalysisBehavior.logit_model(data, model_description)
+result, summary = AnalysisBehavior.logit_m
+odel(data, model_description)
 #%%
 p60 = result.pvalues['C(Feeder_Interval)[T.60]']
 p120 = result.pvalues['C(Feeder_Interval)[T.120]']
@@ -44,7 +46,10 @@ pvalue300 = FormatUtils.format_pvalue(p300)
 model_description = 'AtFeeder ~ C(Subject) + Feeder_Interval + TimeSinceFeeding'
 result_interval, summary_interval = AnalysisBehavior.logit_model(intervention_data, model_description)
 p_feeder_interval = result_interval.pvalues['Feeder_Interval']
-p_feeder_interval = FormatUtils.format_pvalue(p_feeder_interval)
+
+slope_feeder_interval = result_interval.params['Feeder_Interval']
+
+p_feeder_interval = FormatUtils.format_pvalue(p_feeder_interval, slope_feeder_interval)
 p_feeder_interval_text = f'Interval, {p_feeder_interval}'
 
 #%%
@@ -55,11 +60,11 @@ intervention180 = intervention_data.query('Feeder_Interval == 180')
 intervention240 = intervention_data.query('Feeder_Interval == 240')
 intervention300 = intervention_data.query('Feeder_Interval == 300')
 
-result60 = AnalysisBehavior.piecewise_linear_activity(intervention60, split_time=60 * split_ratio)
-result120 = AnalysisBehavior.piecewise_linear_activity(intervention120, split_time=120 * split_ratio)
-result180 = AnalysisBehavior.piecewise_linear_activity(intervention180, split_time=180 * split_ratio)
-result240 = AnalysisBehavior.piecewise_linear_activity(intervention240, split_time=240 * split_ratio)
-result300 = AnalysisBehavior.piecewise_linear_activity(intervention300, split_time=300 * split_ratio)
+result60 = AnalysisBehavior.piecewise_linear_location(intervention60, split_time=60 * split_ratio)
+result120 = AnalysisBehavior.piecewise_linear_location(intervention120, split_time=120 * split_ratio)
+result180 = AnalysisBehavior.piecewise_linear_location(intervention180, split_time=180 * split_ratio)
+result240 = AnalysisBehavior.piecewise_linear_location(intervention240, split_time=240 * split_ratio)
+result300 = AnalysisBehavior.piecewise_linear_location(intervention300, split_time=300 * split_ratio)
 
 r60p1 = FormatUtils.format_pvalue(result60['pvalue1'], result60['slope1'], subscript='1')
 r60p2 = FormatUtils.format_pvalue(result60['pvalue2'], result60['slope2'], subscript='2')
@@ -78,7 +83,7 @@ plt.figure()
 
 colors = Settings.colors
 
-plt.gca().invert_xaxis()
+#plt.gca().invert_xaxis()
 plt.axhline(y=baseline_activity, color='gray', linestyle='--', label='Baseline', zorder=0)
 
 intervals.sort()
@@ -90,29 +95,29 @@ for index, interval in enumerate(intervals):
 ax = plt.gca()
 ax.set_facecolor('#F1F0EA')
 
-plt.text(120, 0.83, pvalue60, fontsize=12, color=colors['60'])
-plt.text(175, 0.75, pvalue120, fontsize=12, color=colors['120'])
-plt.text(205, 0.50, pvalue180, fontsize=12, color=colors['180'])
-plt.text(275, 0.55, pvalue240, fontsize=12, color=colors['240'])
-plt.text(250, 0.80, pvalue300, fontsize=12, color=colors['300'])
+plt.text(65, 0.85, pvalue60, fontsize=12, color=colors['60'])
+plt.text(150, 0.80, pvalue120, fontsize=12, color=colors['120'])
+plt.text(35, 0.55, pvalue180, fontsize=12, color=colors['180'])
+plt.text(240, 0.75, pvalue240, fontsize=12, color=colors['240'])
+plt.text(215, 0.60, pvalue300, fontsize=12, color=colors['300'])
 
-plt.text(90, 0.35, p_feeder_interval_text, fontsize=12, color='black')
+plt.text(180, 0.40, p_feeder_interval_text, fontsize=12, color='black')
 
 # Add the p values for the piecewise linear models
-plt.text(300, 0.30, '60s:   ' + r60p1, fontsize=12, color=colors['60'])
-plt.text(300, 0.25, '120s: ' + r120p1, fontsize=12, color=colors['120'])
-plt.text(300, 0.20, '180s: ' + r180p1, fontsize=12, color=colors['180'])
-plt.text(300, 0.15, '240s: ' + r240p1, fontsize=12, color=colors['240'])
-plt.text(300, 0.10, '300s: ' + r300p1, fontsize=12, color=colors['300'])
+plt.text(15, 0.25, '60s:   ' + r60p1, fontsize=12, color=colors['60'])
+plt.text(15, 0.20, '120s: ' + r120p1, fontsize=12, color=colors['120'])
+plt.text(15, 0.15, '180s: ' + r180p1, fontsize=12, color=colors['180'])
+plt.text(15, 0.10, '240s: ' + r240p1, fontsize=12, color=colors['240'])
+plt.text(15, 0.05, '300s: ' + r300p1, fontsize=12, color=colors['300'])
 # Add all the formatted p-values
-plt.text(220, 0.30, r60p2, fontsize=12, color=colors['60'])
-plt.text(220, 0.25, r120p2, fontsize=12, color=colors['120'])
-plt.text(220, 0.20, r180p2, fontsize=12, color=colors['180'])
-plt.text(220, 0.15, r240p2, fontsize=12, color=colors['240'])
-plt.text(220, 0.10, r300p2, fontsize=12, color=colors['300'])
+plt.text(120, 0.25, r60p2, fontsize=12, color=colors['60'])
+plt.text(120, 0.20, r120p2, fontsize=12, color=colors['120'])
+plt.text(120, 0.15, r180p2, fontsize=12, color=colors['180'])
+plt.text(120, 0.10, r240p2, fontsize=12, color=colors['240'])
+plt.text(120, 0.05, r300p2, fontsize=12, color=colors['300'])
 
 plt.ylim(0, 1)
-plt.xlabel('Time to Feeding (s)')
+plt.xlabel('Time Since Feeding (s)')
 plt.ylabel('Time at Feeder (Proportion)')
 plt.xticks(range(0, 300, 45))
 plt.grid()
@@ -120,4 +125,12 @@ plt.legend(ncol=3)
 plt.tight_layout()
 plt.savefig(output_folder + 'location.png', dpi=300)
 plt.savefig(output_folder + 'location.pdf')
+plt.show()
+
+plt.figure()
+sns.lineplot(x='TimeSinceFeeding', y='AtFeeder', hue='Subject', data=intervention120)
+plt.show()
+
+plt.figure()
+sns.lineplot(x='TimeSinceFeeding', y='AtFeeder', data=intervention120)
 plt.show()

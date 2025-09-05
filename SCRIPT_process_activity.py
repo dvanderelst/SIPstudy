@@ -67,19 +67,8 @@ r240p2 = FormatUtils.format_pvalue(result240['pvalue2'], result240['slope2'],sub
 r300p1 = FormatUtils.format_pvalue(result300['pvalue1'], result300['slope1'], subscript='1')
 r300p2 = FormatUtils.format_pvalue(result300['pvalue2'], result300['slope2'], subscript='2')
 
-#prediction1 = result_full['prediction1']
-#prediction2 = result_full['prediction2']
-#pvalue1 = result_full['pvalue1']
-#pvalue2 = result_full['pvalue2']
-
-#pvalue1 = FormatUtils.format_pvalue(pvalue1, subscript='1')
-#pvalue2 = FormatUtils.format_pvalue(pvalue2, subscript='2')
-
-
 #%%
-
 plt.figure()
-
 colors = Settings.colors
 
 plt.axhline(y=baseline_activity, color='gray', linestyle='--', label='Baseline Activity', zorder=0)
@@ -90,18 +79,19 @@ for index, interval in enumerate(intervals):
     current_color = colors[str(interval)]
     plt.plot(selected_data['TimeSinceFeeding'], selected_data['Active'], alpha=1, label=str(interval) + ' s', linewidth=2, color=current_color, marker = '.')
 
-# Add all the formatted p-values
-plt.text(200, 0.75, '60s:   ' + r60p1, fontsize=12, color=colors['60'])
-plt.text(200, 0.70, '120s: ' + r120p1, fontsize=12, color=colors['120'])
-plt.text(200, 0.65, '180s: ' + r180p1, fontsize=12, color=colors['180'])
-plt.text(200, 0.60, '240s: ' + r240p1, fontsize=12, color=colors['240'])
-plt.text(200, 0.55, '300s: ' + r300p1, fontsize=12, color=colors['300'])
-# Add all the formatted p-values
-plt.text(120, 0.75, r60p2, fontsize=12, color=colors['60'])
-plt.text(120, 0.70, r120p2, fontsize=12, color=colors['120'])
-plt.text(120, 0.65, r180p2, fontsize=12, color=colors['180'])
-plt.text(120, 0.60, r240p2, fontsize=12, color=colors['240'])
-plt.text(120, 0.55, r300p2, fontsize=12, color=colors['300'])
+
+# # Add all the formatted p-values
+plt.text(15, 0.80, '60s:   ' + r60p1, fontsize=12, color=colors['60'])
+plt.text(15, 0.75, '120s: ' + r120p1, fontsize=12, color=colors['120'])
+plt.text(15, 0.70, '180s: ' + r180p1, fontsize=12, color=colors['180'])
+plt.text(120, 0.10, '240s: ' + r240p1, fontsize=12, color=colors['240'])
+plt.text(120, 0.05, '300s: ' + r300p1, fontsize=12, color=colors['300'])
+# # Add all the formatted p-values
+plt.text(120, 0.80, r60p2, fontsize=12, color=colors['60'])
+plt.text(120, 0.75, r120p2, fontsize=12, color=colors['120'])
+plt.text(120, 0.70, r180p2, fontsize=12, color=colors['180'])
+plt.text(220, 0.10, r240p2, fontsize=12, color=colors['240'])
+plt.text(220, 0.05, r300p2, fontsize=12, color=colors['300'])
 
 ax = plt.gca()
 ax.set_facecolor('#F1F0EA')

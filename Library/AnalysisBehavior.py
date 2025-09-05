@@ -3,16 +3,17 @@ import pandas as pd
 import statsmodels.formula.api as smf
 
 
-
-
 def logit_model(data, model_description):
     model = smf.logit(model_description, data=data)
     result = model.fit()
     summary = result.summary()
     return result, summary
 
+
 def read_data():
-    data = pd.read_csv('data/SIP_observations_2-7-25_take2.csv', index_col=0)
+    # file = 'data/SIP_observations.csv'
+    file = 'data/SIP_observations_2-7-25_take2.csv'
+    data = pd.read_csv(file, index_col=0)
     data = data.query('action_cat != "OutofView"')
     data = data.query('action_cat != "Pace"')
     data = data.copy()
@@ -56,7 +57,7 @@ def piecewise_linear_location(intervention_data, split_time, normalized=False, f
     if normalized: model_description = 'AtFeeder ~ C(Subject) + Feeder_Interval + TimeSinceFeedingNormalized'
 
     intervals = selected['Feeder_Interval'].unique()
-    if len(intervals)==1:
+    if len(intervals) == 1:
         model_description = 'AtFeeder ~ C(Subject) + TimeSinceFeeding'
         if normalized: model_description = 'AtFeeder ~ C(Subject) + TimeSinceFeedingNormalized'
 
@@ -71,14 +72,14 @@ def piecewise_linear_location(intervention_data, split_time, normalized=False, f
     result1 = model.fit()
     summary1 = result1.summary()
 
-    prediction_data1 = prediction_data.query('TimeSinceFeeding >= @split_time')
+    prediction_data1 = prediction_data.query('TimeSinceFeeding <= @split_time')
     prediction_data1 = prediction_data1.copy()
     prediction_data1['Predicted'] = result1.predict(prediction_data1)
     prediction1 = prediction_data1.groupby('TimeSinceFeeding')['Predicted'].mean()
     prediction1 = prediction1.reset_index()
 
     # PART 2
-    second_part = selected.query('TimeSinceFeeding < @split_time')
+    second_part = selected.query('TimeSinceFeeding > @split_time')
     model = smf.logit(model_description, data=second_part)
     result2 = model.fit()
     summary2 = result2.summary()
@@ -121,7 +122,7 @@ def piecewise_linear_activity(intervention_data, split_time, normalized=False, f
     if normalized: model_description = 'Active ~ C(Subject) + Feeder_Interval + TimeSinceFeedingNormalized'
 
     intervals = selected['Feeder_Interval'].unique()
-    if len(intervals)==1:
+    if len(intervals) == 1:
         model_description = 'Active ~ C(Subject) + TimeSinceFeeding'
         if normalized: model_description = 'Active ~ C(Subject) + TimeSinceFeedingNormalized'
 
@@ -136,7 +137,7 @@ def piecewise_linear_activity(intervention_data, split_time, normalized=False, f
     result1 = model.fit()
     summary1 = result1.summary()
 
-    prediction_data1 = prediction_data.query('TimeSinceFeeding >= @split_time')
+    prediction_data1 = prediction_data.query('TimeSinceFeeding <= @split_time')
     prediction_data1 = prediction_data1.copy()
     prediction_data1['Predicted'] = result1.predict(prediction_data1)
     prediction1 = prediction_data1.groupby('TimeSinceFeeding')['Predicted'].mean()
@@ -148,7 +149,7 @@ def piecewise_linear_activity(intervention_data, split_time, normalized=False, f
     result2 = model.fit()
     summary2 = result2.summary()
 
-    prediction_data2 = prediction_data.query('TimeSinceFeeding < @split_time')
+    prediction_data2 = prediction_data.query('TimeSinceFeeding > @split_time')
     prediction_data2 = prediction_data2.copy()
     prediction_data2['Predicted'] = result2.predict(prediction_data2)
     prediction2 = prediction_data2.groupby('TimeSinceFeeding')['Predicted'].mean()
@@ -188,7 +189,6 @@ def piecewise_linear_activity(intervention_data, split_time, normalized=False, f
     results['slope1'] = slope1
     results['slope2'] = slope2
     return results
-
 
 
 # def compute_transition_matrix(data):

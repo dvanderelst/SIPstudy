@@ -7,3 +7,7 @@ Library/__pycache__/
 drinking_output/
 
 behavior_output/
+
+manuscripts/
+
+*.csv#
