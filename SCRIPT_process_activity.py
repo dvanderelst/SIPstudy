@@ -1,5 +1,5 @@
 import matplotlib
-
+import pickle
 from matplotlib import pyplot as plt
 from Library import FormatUtils
 from Library import AnalysisBehavior
@@ -98,7 +98,7 @@ ax.set_facecolor('#F1F0EA')
 
 plt.ylim(0, 1)
 plt.xlabel('Time Since Feeding (s)')
-plt.ylabel('Activity (Proportion)')
+plt.ylabel('Activity (Average Proportion)')
 
 #plt.text(225, 0.50, pvalue1, fontsize=12, color='black')
 #plt.text(45, 0.20, pvalue2, fontsize=12, color='black')
@@ -110,3 +110,16 @@ plt.tight_layout()
 plt.savefig(output_folder + 'activity.png', dpi=300)
 plt.savefig(output_folder + 'activity.pdf')
 plt.show()
+
+# Save the piecewise_linear_activity results to a pickle file for later use
+pickle_file = f"{output_folder}piecewise_linear_activity_results.pck"
+pickle_file_handle = open(pickle_file, 'wb')
+
+pickle.dump({
+    'result60': result60,
+    'result120': result120,
+    'result180': result180,
+    'result240': result240,
+    'result300': result300
+}, pickle_file_handle)
+pickle_file_handle.close()

@@ -1,35 +1,36 @@
-import pypandoc
+import shutil
+import subprocess
 from pathlib import Path
-import subprocess, shutil
+import re
 
-def md_to_pdf(md_path, out_path="Supplement.pdf", engine="xelatex"):
-    if shutil.which("pandoc") is None:
-        raise RuntimeError("pandoc not found")
-    subprocess.run(
-        ["pandoc", str(md_path), "-s", "-o", out_path, f"--pdf-engine={engine}"],
-        check=True
-    )
-def md_to_odt(md_text: str, out_path: str, reference_odt: str | None = None,
-              number_sections: bool = False, toc: bool = False):
-    """
-    Convert Markdown text to an .odt file using Pandoc.
-    - reference_odt: optional path to a template .odt for styles
-    - number_sections / toc: add section numbers / table of contents
-    """
-    args = ["--standalone"]
-    if number_sections:
-        args.append("--number-sections")
-    if toc:
-        args.extend(["--toc", "--toc-depth=3"])
-    if reference_odt:
-        args.extend(["--reference-doc=" + str(reference_odt)])
+def md_to_pdf(md_path, out_path="Supplement.pdf"):
+    toc = True
+    number_sections = True
+    engine = "xelatex"
+    if shutil.which("pandoc") is None: raise RuntimeError("pandoc not found")
+    cmd = ["pandoc", str(md_path), "-s", "-o", str(Path(out_path).with_suffix(".pdf")), f"--pdf-engine={engine}"]
+    cmd = cmd + ["-V", "geometry=margin=1in"]
+    if toc: cmd.append("--toc")
+    if number_sections: cmd.append("--number-sections")
+    subprocess.run(cmd, check=True)
 
-    out_path = str(Path(out_path).with_suffix(".odt"))
-    pypandoc.convert_text(md_text, to="odt", format="md", outputfile=out_path, extra_args=args)
-    return out_path
 
-def as_code(text):
 
-    code = "```\n" + text + "\n```"
-    code = code.replace('Standard Errors assume that the covariance matrix of the errors is correctly specified', 'St. Err. assume that the cov. matrix of the errors is correctly specified')
+def friendly_name(name):
+    m = re.match(r"C\(([^)]+)\)\[T\.(.+)\]", name)
+    if m:
+        var, level = m.groups()
+        return f"{var} = {level}"
+    return name
+
+def model2code(results):
+    names = results.model.exog_names
+    for index, name in enumerate(names):
+        friendly = friendly_name(name)
+        if name == 'days': friendly = 'Days'
+        if name == 'const': friendly = 'Intercept'
+        results.model.exog_names[index] = friendly
+    code = results.summary().as_text()
+    code = "```\n" + code + "\n```"
     return code
+

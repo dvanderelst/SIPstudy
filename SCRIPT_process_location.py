@@ -4,7 +4,7 @@ from matplotlib import pyplot as plt
 from Library import FormatUtils
 from Library import AnalysisBehavior
 from Library import Settings
-
+import pickle
 split_ratio = 2/3
 
 
@@ -27,8 +27,7 @@ intervals = intervention_data.Feeder_Interval.unique()
 intervals.sort()
 
 model_description = 'AtFeeder ~ C(Subject) + C(Feeder_Interval) + TimeSinceFeeding'
-result, summary = AnalysisBehavior.logit_m
-odel(data, model_description)
+result, summary = AnalysisBehavior.logit_model(data, model_description)
 #%%
 p60 = result.pvalues['C(Feeder_Interval)[T.60]']
 p120 = result.pvalues['C(Feeder_Interval)[T.120]']
@@ -118,7 +117,7 @@ plt.text(120, 0.05, r300p2, fontsize=12, color=colors['300'])
 
 plt.ylim(0, 1)
 plt.xlabel('Time Since Feeding (s)')
-plt.ylabel('Time at Feeder (Proportion)')
+plt.ylabel('Time at Feeder (Average Proportion)')
 plt.xticks(range(0, 300, 45))
 plt.grid()
 plt.legend(ncol=3)
@@ -134,3 +133,19 @@ plt.show()
 plt.figure()
 sns.lineplot(x='TimeSinceFeeding', y='AtFeeder', data=intervention120)
 plt.show()
+
+
+# Save the piecewise_linear_activity results to a pickle file for later use
+pickle_file = f"{output_folder}piecewise_linear_location_results.pck"
+pickle_file_handle = open(pickle_file, 'wb')
+
+pickle.dump({
+    'result60': result60,
+    'result120': result120,
+    'result180': result180,
+    'result240': result240,
+    'result300': result300,
+    'result_interval': result_interval, #-->tests effect of interval
+    'result': result  # --> includes interval as factor, tests whether each of interval levels differs from baseline
+}, pickle_file_handle)
+pickle_file_handle.close()
