@@ -11,3 +11,7 @@ behavior_output/
 manuscripts/
 
 *.csv#
+
+compiled_stats/
+
+steps_output/

@@ -6,7 +6,7 @@ def format_ktest_result_apa(statistic, pvalue, alpha=0.05):
         formatted_pvalue = "p < " + str(alpha)
     else:
         formatted_pvalue = f"p = {pvalue:.2f}"
-    formatted_output = f"k = {statistic:.2f}, {formatted_pvalue}"
+    formatted_output = f"ks = {statistic:.2f}, {formatted_pvalue}"
     return formatted_output
 
 

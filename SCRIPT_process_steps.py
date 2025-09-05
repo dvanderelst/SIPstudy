@@ -9,9 +9,12 @@ from Library import Settings
 from Library import Legend
 from Library import AnalysisStep
 
+
 from matplotlib import pyplot as plt
 from scipy.stats import ks_2samp
 import matplotlib
+
+import pickle
 
 ##########################
 alpha_level = 0.001
@@ -37,6 +40,7 @@ intervals = intervals[~np.isnan(intervals)]
 plt.figure(figsize=figure_size)
 tests_output = open(f'{output_folder}statistics_steps.txt', 'w')
 
+regression_results = {}
 
 for plot_index, cat_name in enumerate(cats):
     if plot_index == 0: plot_nr = 1
@@ -59,6 +63,7 @@ for plot_index, cat_name in enumerate(cats):
     # Run regression on baseline data
     base_line_data = selected_cat.query('Intervention == False')
     regression_result = Stats.regression(base_line_data, dependent_variable, alpha_level)
+    regression_results[cat_name] = regression_result
     residuals = regression_result['residuals']
 
     custom_legend = Legend.CustomLegend()
@@ -91,10 +96,10 @@ for plot_index, cat_name in enumerate(cats):
             if ks_result_p < alpha_level: marker = '*'
             mn_session = numpy.nanmean(selected_interval_data[dependent_variable])
             plt.scatter(mn_day, mn_session, marker=marker, s=150, color=current_color)
-            if interval == '60': interval = '  ' + interval
+            interval = str(int(interval))
             custom_legend.add_entry(label=interval_str + 's', color=current_color, marker='o', linestyle='')
             #print(interval, predicted, mn_session, max_day)
-            statistics_line = f'{cat_name}, interval: {interval}, {formatted}\n'
+            statistics_line = f'{cat_name}, interval {interval}s vs Baseline, {formatted}\n'
             tests_output.write(statistics_line)
 
     custom_legend.add_entry(label=f'Interval mean, $p$ > {alpha_level}', color='black', marker='+', linestyle='')
@@ -141,3 +146,9 @@ plt.savefig(output_file)
 
 plt.show()
 tests_output.close()
+
+pickle_file = f"{output_folder}regression.pck"
+pickle_file_handle = open(pickle_file, 'wb')
+pickle.dump(regression_results, pickle_file_handle)
+pickle_file_handle.close()
+
