@@ -30,6 +30,7 @@ def model2code(results):
         if name == 'days': friendly = 'Days'
         if name == 'const': friendly = 'Intercept'
         results.model.exog_names[index] = friendly
+    results.cov_kwds['description'] = 'Standard Errors assume correct specification of covariance matrix.'
     code = results.summary().as_text()
     code = "```\n" + code + "\n```"
     return code

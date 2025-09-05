@@ -1,12 +1,14 @@
 import math
 
+
 def format_ktest_result_apa(statistic, pvalue, alpha=0.05):
     if statistic == 'NaN': return f"k = NaN, p = NaN"
     if pvalue < alpha:
         formatted_pvalue = "p < " + str(alpha)
     else:
-        formatted_pvalue = f"p = {pvalue:.2f}"
-    formatted_output = f"ks = {statistic:.2f}, {formatted_pvalue}"
+        formatted_pvalue = f"p = {pvalue:.3f}"
+    formatted_output = f"ks = {statistic:.3f}, {formatted_pvalue}"
+    print(pvalue, formatted_output)
     return formatted_output
 
 
@@ -37,7 +39,7 @@ def format_pvalue(p, slope=None, levels=None, subscript = ''):
     for level in levels:
         if p < level:
             return f"$p_{subscript}{sign} < {level}$"
-    return f"$p_{subscript}{sign} = {p:.2f}$"
+    return f"$p_{subscript}{sign} = {p:.3f}$"
 
 
 def format_ttest_result_apa(ttest_result, alpha=0.05):
@@ -45,5 +47,5 @@ def format_ttest_result_apa(ttest_result, alpha=0.05):
     pvalue = ttest_result.pvalue
     df = ttest_result.df
     formatted_pvalue = format_pvalue(pvalue, [alpha])
-    formatted_output = f"t({df:.0f}) = {statistic:.2f}, {formatted_pvalue}"
+    formatted_output = f"t({df:.0f}) = {statistic:.3f}, {formatted_pvalue}"
     return formatted_output

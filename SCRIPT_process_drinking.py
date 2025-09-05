@@ -11,6 +11,7 @@ from Library import Legend
 from matplotlib import pyplot as plt
 from scipy.stats import ks_2samp
 import matplotlib
+import pickle
 
 ##########################
 phase = 1
@@ -22,10 +23,12 @@ max_days_log = {}
 
 tests_output = open(f'{output_folder}statistics.txt', 'w')
 
+all_linear_regression_results = {}
+
 for phase in [1, 2]:
     for dependent_variable in ['session', 'overnight', 'total']:
         print(f"+ Phase: {phase}, dependent_variable: {dependent_variable}")
-        title_line = f"\n\nPhase: {phase}, Dependent Variable: {dependent_variable}\n\n"
+        title_line = f"Phase: {phase}, Dependent Variable: {dependent_variable}\n"
         tests_output.write(title_line)
 
         figure_size = (12, 8)
@@ -65,6 +68,10 @@ for phase in [1, 2]:
             max_days_log[cat_name] = max_day
             base_line_data = selected_cat.query('interval == "baseline"')
             regression_result = Stats.regression(base_line_data, dependent_variable, alpha_level)
+
+            label = f"{cat_name}_phase_{phase}_{dependent_variable}"
+            all_linear_regression_results[label] = regression_result
+
             residuals = regression_result['residuals']
 
             plot_nr = AnalysisDrink.plot_nr(phase=phase, index=plot_index)
@@ -103,7 +110,7 @@ for phase in [1, 2]:
                     if interval == '60': interval = '  ' + interval
                     custom_legend.add_entry(label=interval + 's', color=current_color, marker='o', linestyle='')
 
-                    statistics_line = f'{cat_name}, interval: {interval}, {formatted}\n'
+                    statistics_line = f'{cat_name}, {interval}, {formatted}\n'
                     tests_output.write(statistics_line)
 
             custom_legend.add_entry(label=f'Interval mean, $p$ > {alpha_level}', color='black', marker='+', linestyle='')
@@ -157,3 +164,8 @@ for phase in [1, 2]:
 tests_output.close()
 print(max_days_log)
 
+# Save the piecewise_linear_activity results to a pickle file for later use
+pickle_file = f"{output_folder}all_linear_regression_results.pck"
+pickle_file_handle = open(pickle_file, 'wb')
+pickle.dump(all_linear_regression_results, pickle_file_handle)
+pickle_file_handle.close()
