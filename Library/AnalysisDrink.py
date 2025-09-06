@@ -16,7 +16,7 @@ def plot_nr(phase, index):
         if index > 1: return 3
 
 
-def read_phase(phase):
+def read_data(phase):
     data = pd.read_csv('data/SIP_data.csv', index_col=0)
     data = data.iloc[:, [0, 1, 2, 3, 4, 6, 7]]
     new_variables = ['interval', 'subject', 'date', 'weight', 'session', 'total', 'overnight']

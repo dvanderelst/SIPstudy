@@ -11,7 +11,6 @@ def logit_model(data, model_description):
 
 
 def read_data():
-    # file = 'data/SIP_observations.csv'
     file = 'data/SIP_observations_2-7-25_take2.csv'
     data = pd.read_csv(file, index_col=0)
     data = data.query('action_cat != "OutofView"')

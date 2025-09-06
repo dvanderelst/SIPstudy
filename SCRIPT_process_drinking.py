@@ -42,7 +42,7 @@ for phase in [1, 2]:
 
         matplotlib.rcParams['font.family'] = 'serif'
         colors = Settings.colors
-        data = AnalysisDrink.read_phase(phase=phase)
+        data = AnalysisDrink.read_data(phase=phase)
 
         max_plot_range = numpy.max(data[dependent_variable]) + 10
 
