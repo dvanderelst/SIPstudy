@@ -94,26 +94,26 @@ for index, interval in enumerate(intervals):
 ax = plt.gca()
 ax.set_facecolor('#F1F0EA')
 
-plt.text(65, 0.85, pvalue60, fontsize=12, color=colors['60'])
-plt.text(150, 0.80, pvalue120, fontsize=12, color=colors['120'])
-plt.text(35, 0.55, pvalue180, fontsize=12, color=colors['180'])
-plt.text(240, 0.75, pvalue240, fontsize=12, color=colors['240'])
-plt.text(215, 0.60, pvalue300, fontsize=12, color=colors['300'])
-
-plt.text(180, 0.40, p_feeder_interval_text, fontsize=12, color='black')
-
-# Add the p values for the piecewise linear models
-plt.text(15, 0.25, '60s:   ' + r60p1, fontsize=12, color=colors['60'])
-plt.text(15, 0.20, '120s: ' + r120p1, fontsize=12, color=colors['120'])
-plt.text(15, 0.15, '180s: ' + r180p1, fontsize=12, color=colors['180'])
-plt.text(15, 0.10, '240s: ' + r240p1, fontsize=12, color=colors['240'])
-plt.text(15, 0.05, '300s: ' + r300p1, fontsize=12, color=colors['300'])
-# Add all the formatted p-values
-plt.text(120, 0.25, r60p2, fontsize=12, color=colors['60'])
-plt.text(120, 0.20, r120p2, fontsize=12, color=colors['120'])
-plt.text(120, 0.15, r180p2, fontsize=12, color=colors['180'])
-plt.text(120, 0.10, r240p2, fontsize=12, color=colors['240'])
-plt.text(120, 0.05, r300p2, fontsize=12, color=colors['300'])
+# plt.text(65, 0.85, pvalue60, fontsize=12, color=colors['60'])
+# plt.text(150, 0.80, pvalue120, fontsize=12, color=colors['120'])
+# plt.text(35, 0.55, pvalue180, fontsize=12, color=colors['180'])
+# plt.text(240, 0.75, pvalue240, fontsize=12, color=colors['240'])
+# plt.text(215, 0.60, pvalue300, fontsize=12, color=colors['300'])
+#
+# plt.text(180, 0.40, p_feeder_interval_text, fontsize=12, color='black')
+#
+# # Add the p values for the piecewise linear models
+# plt.text(15, 0.25, '60s:   ' + r60p1, fontsize=12, color=colors['60'])
+# plt.text(15, 0.20, '120s: ' + r120p1, fontsize=12, color=colors['120'])
+# plt.text(15, 0.15, '180s: ' + r180p1, fontsize=12, color=colors['180'])
+# plt.text(15, 0.10, '240s: ' + r240p1, fontsize=12, color=colors['240'])
+# plt.text(15, 0.05, '300s: ' + r300p1, fontsize=12, color=colors['300'])
+# # Add all the formatted p-values
+# plt.text(120, 0.25, r60p2, fontsize=12, color=colors['60'])
+# plt.text(120, 0.20, r120p2, fontsize=12, color=colors['120'])
+# plt.text(120, 0.15, r180p2, fontsize=12, color=colors['180'])
+# plt.text(120, 0.10, r240p2, fontsize=12, color=colors['240'])
+# plt.text(120, 0.05, r300p2, fontsize=12, color=colors['300'])
 
 plt.ylim(0, 1)
 plt.xlabel('Time Since Feeding (s)')

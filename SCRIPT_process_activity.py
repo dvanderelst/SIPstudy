@@ -80,18 +80,18 @@ for index, interval in enumerate(intervals):
     plt.plot(selected_data['TimeSinceFeeding'], selected_data['Active'], alpha=1, label=str(interval) + ' s', linewidth=2, color=current_color, marker = '.')
 
 
-# # Add all the formatted p-values
-plt.text(15, 0.80, '60s:   ' + r60p1, fontsize=12, color=colors['60'])
-plt.text(15, 0.75, '120s: ' + r120p1, fontsize=12, color=colors['120'])
-plt.text(15, 0.70, '180s: ' + r180p1, fontsize=12, color=colors['180'])
-plt.text(120, 0.10, '240s: ' + r240p1, fontsize=12, color=colors['240'])
-plt.text(120, 0.05, '300s: ' + r300p1, fontsize=12, color=colors['300'])
-# # Add all the formatted p-values
-plt.text(120, 0.80, r60p2, fontsize=12, color=colors['60'])
-plt.text(120, 0.75, r120p2, fontsize=12, color=colors['120'])
-plt.text(120, 0.70, r180p2, fontsize=12, color=colors['180'])
-plt.text(220, 0.10, r240p2, fontsize=12, color=colors['240'])
-plt.text(220, 0.05, r300p2, fontsize=12, color=colors['300'])
+# # # Add all the formatted p-values
+# plt.text(15, 0.80, '60s:   ' + r60p1, fontsize=12, color=colors['60'])
+# plt.text(15, 0.75, '120s: ' + r120p1, fontsize=12, color=colors['120'])
+# plt.text(15, 0.70, '180s: ' + r180p1, fontsize=12, color=colors['180'])
+# plt.text(120, 0.10, '240s: ' + r240p1, fontsize=12, color=colors['240'])
+# plt.text(120, 0.05, '300s: ' + r300p1, fontsize=12, color=colors['300'])
+# # # Add all the formatted p-values
+# plt.text(120, 0.80, r60p2, fontsize=12, color=colors['60'])
+# plt.text(120, 0.75, r120p2, fontsize=12, color=colors['120'])
+# plt.text(120, 0.70, r180p2, fontsize=12, color=colors['180'])
+# plt.text(220, 0.10, r240p2, fontsize=12, color=colors['240'])
+# plt.text(220, 0.05, r300p2, fontsize=12, color=colors['300'])
 
 ax = plt.gca()
 ax.set_facecolor('#F1F0EA')
