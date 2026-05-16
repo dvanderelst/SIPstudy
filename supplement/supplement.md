@@ -37,7 +37,7 @@ Dep. Variable:                  steps   R-squared:                       0.352
 Model:                            OLS   Adj. R-squared:                  0.340
 Method:                 Least Squares   F-statistic:                     30.41
 Date:                Sat, 16 May 2026   Prob (F-statistic):           9.23e-07
-Time:                        19:29:59   Log-Likelihood:                -120.19
+Time:                        19:37:07   Log-Likelihood:                -120.19
 No. Observations:                  58   AIC:                             244.4
 Df Residuals:                      56   BIC:                             248.5
 Df Model:                           1                                         
@@ -67,7 +67,7 @@ Dep. Variable:                  steps   R-squared:                       0.072
 Model:                            OLS   Adj. R-squared:                  0.054
 Method:                 Least Squares   F-statistic:                     3.895
 Date:                Sat, 16 May 2026   Prob (F-statistic):             0.0540
-Time:                        19:29:59   Log-Likelihood:                -150.25
+Time:                        19:37:07   Log-Likelihood:                -150.25
 No. Observations:                  52   AIC:                             304.5
 Df Residuals:                      50   BIC:                             308.4
 Df Model:                           1                                         
@@ -97,7 +97,7 @@ Dep. Variable:                  steps   R-squared:                       0.017
 Model:                            OLS   Adj. R-squared:                  0.001
 Method:                 Least Squares   F-statistic:                     1.054
 Date:                Sat, 16 May 2026   Prob (F-statistic):              0.309
-Time:                        19:29:59   Log-Likelihood:                -70.141
+Time:                        19:37:07   Log-Likelihood:                -70.141
 No. Observations:                  62   AIC:                             144.3
 Df Residuals:                      60   BIC:                             148.5
 Df Model:                           1                                         
@@ -127,7 +127,7 @@ Dep. Variable:                  steps   R-squared:                       0.001
 Model:                            OLS   Adj. R-squared:                 -0.018
 Method:                 Least Squares   F-statistic:                   0.04356
 Date:                Sat, 16 May 2026   Prob (F-statistic):              0.835
-Time:                        19:29:59   Log-Likelihood:                -76.059
+Time:                        19:37:07   Log-Likelihood:                -76.059
 No. Observations:                  54   AIC:                             156.1
 Df Residuals:                      52   BIC:                             160.1
 Df Model:                           1                                         
@@ -197,7 +197,7 @@ Dep. Variable:                 Active   No. Observations:                  488
 Model:                          Logit   Df Residuals:                      484
 Method:                           MLE   Df Model:                            3
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                 0.04769
-Time:                        19:29:59   Log-Likelihood:                -288.26
+Time:                        19:37:07   Log-Likelihood:                -288.26
 converged:                       True   LL-Null:                       -302.69
 Covariance Type:            nonrobust   LLR p-value:                 2.387e-06
 =====================================================================================
@@ -219,7 +219,7 @@ Dep. Variable:                 Active   No. Observations:                  487
 Model:                          Logit   Df Residuals:                      483
 Method:                           MLE   Df Model:                            3
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                 0.03339
-Time:                        19:29:59   Log-Likelihood:                -303.90
+Time:                        19:37:07   Log-Likelihood:                -303.90
 converged:                       True   LL-Null:                       -314.40
 Covariance Type:            nonrobust   LLR p-value:                 0.0001056
 =====================================================================================
@@ -243,7 +243,7 @@ Dep. Variable:                 Active   No. Observations:                  551
 Model:                          Logit   Df Residuals:                      546
 Method:                           MLE   Df Model:                            4
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1328
-Time:                        19:29:59   Log-Likelihood:                -312.03
+Time:                        19:37:07   Log-Likelihood:                -312.03
 converged:                       True   LL-Null:                       -359.83
 Covariance Type:            nonrobust   LLR p-value:                 8.516e-20
 =====================================================================================
@@ -266,7 +266,7 @@ Dep. Variable:                 Active   No. Observations:                  324
 Model:                          Logit   Df Residuals:                      319
 Method:                           MLE   Df Model:                            4
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1456
-Time:                        19:29:59   Log-Likelihood:                -187.73
+Time:                        19:37:07   Log-Likelihood:                -187.73
 converged:                       True   LL-Null:                       -219.72
 Covariance Type:            nonrobust   LLR p-value:                 4.252e-13
 =====================================================================================
@@ -291,7 +291,7 @@ Dep. Variable:                 Active   No. Observations:                  471
 Model:                          Logit   Df Residuals:                      466
 Method:                           MLE   Df Model:                            4
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1733
-Time:                        19:29:59   Log-Likelihood:                -239.05
+Time:                        19:37:07   Log-Likelihood:                -239.05
 converged:                       True   LL-Null:                       -289.14
 Covariance Type:            nonrobust   LLR p-value:                 8.938e-21
 =====================================================================================
@@ -314,7 +314,7 @@ Dep. Variable:                 Active   No. Observations:                  229
 Model:                          Logit   Df Residuals:                      224
 Method:                           MLE   Df Model:                            4
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1054
-Time:                        19:29:59   Log-Likelihood:                -136.87
+Time:                        19:37:07   Log-Likelihood:                -136.87
 converged:                       True   LL-Null:                       -153.00
 Covariance Type:            nonrobust   LLR p-value:                 1.691e-06
 =====================================================================================
@@ -339,7 +339,7 @@ Dep. Variable:                 Active   No. Observations:                  531
 Model:                          Logit   Df Residuals:                      526
 Method:                           MLE   Df Model:                            4
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1936
-Time:                        19:29:59   Log-Likelihood:                -225.81
+Time:                        19:37:07   Log-Likelihood:                -225.81
 converged:                       True   LL-Null:                       -280.02
 Covariance Type:            nonrobust   LLR p-value:                 1.589e-22
 =====================================================================================
@@ -362,7 +362,7 @@ Dep. Variable:                 Active   No. Observations:                  280
 Model:                          Logit   Df Residuals:                      275
 Method:                           MLE   Df Model:                            4
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1746
-Time:                        19:29:59   Log-Likelihood:                -150.62
+Time:                        19:37:07   Log-Likelihood:                -150.62
 converged:                       True   LL-Null:                       -182.49
 Covariance Type:            nonrobust   LLR p-value:                 4.746e-13
 =====================================================================================
@@ -387,7 +387,7 @@ Dep. Variable:                 Active   No. Observations:                  536
 Model:                          Logit   Df Residuals:                      531
 Method:                           MLE   Df Model:                            4
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                 0.09096
-Time:                        19:29:59   Log-Likelihood:                -315.13
+Time:                        19:37:07   Log-Likelihood:                -315.13
 converged:                       True   LL-Null:                       -346.66
 Covariance Type:            nonrobust   LLR p-value:                 6.586e-13
 =====================================================================================
@@ -410,7 +410,7 @@ Dep. Variable:                 Active   No. Observations:                  283
 Model:                          Logit   Df Residuals:                      278
 Method:                           MLE   Df Model:                            4
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1142
-Time:                        19:29:59   Log-Likelihood:                -162.82
+Time:                        19:37:07   Log-Likelihood:                -162.82
 converged:                       True   LL-Null:                       -183.81
 Covariance Type:            nonrobust   LLR p-value:                 1.690e-08
 =====================================================================================
@@ -450,7 +450,7 @@ Dep. Variable:               AtFeeder   No. Observations:                 6479
 Model:                          Logit   Df Residuals:                     6469
 Method:                           MLE   Df Model:                            9
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1329
-Time:                        19:29:59   Log-Likelihood:                -3679.8
+Time:                        19:37:07   Log-Likelihood:                -3679.8
 converged:                       True   LL-Null:                       -4244.1
 Covariance Type:            nonrobust   LLR p-value:                3.310e-237
 =========================================================================================
@@ -486,7 +486,7 @@ Dep. Variable:               AtFeeder   No. Observations:                 4180
 Model:                          Logit   Df Residuals:                     4174
 Method:                           MLE   Df Model:                            5
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1881
-Time:                        19:30:00   Log-Likelihood:                -1970.0
+Time:                        19:37:08   Log-Likelihood:                -1970.0
 converged:                       True   LL-Null:                       -2426.4
 Covariance Type:            nonrobust   LLR p-value:                4.694e-195
 =====================================================================================
@@ -518,7 +518,7 @@ Dep. Variable:               AtFeeder   No. Observations:                  488
 Model:                          Logit   Df Residuals:                      484
 Method:                           MLE   Df Model:                            3
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                 0.04302
-Time:                        19:30:00   Log-Likelihood:                -177.81
+Time:                        19:37:08   Log-Likelihood:                -177.81
 converged:                       True   LL-Null:                       -185.80
 Covariance Type:            nonrobust   LLR p-value:                  0.001141
 =====================================================================================
@@ -540,7 +540,7 @@ Dep. Variable:               AtFeeder   No. Observations:                  487
 Model:                          Logit   Df Residuals:                      483
 Method:                           MLE   Df Model:                            3
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1249
-Time:                        19:30:00   Log-Likelihood:                -162.47
+Time:                        19:37:08   Log-Likelihood:                -162.47
 converged:                       True   LL-Null:                       -185.66
 Covariance Type:            nonrobust   LLR p-value:                 4.669e-10
 =====================================================================================
@@ -564,7 +564,7 @@ Dep. Variable:               AtFeeder   No. Observations:                  551
 Model:                          Logit   Df Residuals:                      546
 Method:                           MLE   Df Model:                            4
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1108
-Time:                        19:30:00   Log-Likelihood:                -291.13
+Time:                        19:37:08   Log-Likelihood:                -291.13
 converged:                       True   LL-Null:                       -327.39
 Covariance Type:            nonrobust   LLR p-value:                 6.637e-15
 =====================================================================================
@@ -587,7 +587,7 @@ Dep. Variable:               AtFeeder   No. Observations:                  324
 Model:                          Logit   Df Residuals:                      319
 Method:                           MLE   Df Model:                            4
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1681
-Time:                        19:30:00   Log-Likelihood:                -168.54
+Time:                        19:37:08   Log-Likelihood:                -168.54
 converged:                       True   LL-Null:                       -202.59
 Covariance Type:            nonrobust   LLR p-value:                 5.718e-14
 =====================================================================================
@@ -612,7 +612,7 @@ Dep. Variable:               AtFeeder   No. Observations:                  471
 Model:                          Logit   Df Residuals:                      466
 Method:                           MLE   Df Model:                            4
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.3545
-Time:                        19:30:00   Log-Likelihood:                -186.10
+Time:                        19:37:08   Log-Likelihood:                -186.10
 converged:                       True   LL-Null:                       -288.31
 Covariance Type:            nonrobust   LLR p-value:                 4.206e-43
 =====================================================================================
@@ -635,7 +635,7 @@ Dep. Variable:               AtFeeder   No. Observations:                  229
 Model:                          Logit   Df Residuals:                      224
 Method:                           MLE   Df Model:                            4
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.2429
-Time:                        19:30:00   Log-Likelihood:                -98.925
+Time:                        19:37:08   Log-Likelihood:                -98.925
 converged:                       True   LL-Null:                       -130.66
 Covariance Type:            nonrobust   LLR p-value:                 5.395e-13
 =====================================================================================
@@ -660,7 +660,7 @@ Dep. Variable:               AtFeeder   No. Observations:                  531
 Model:                          Logit   Df Residuals:                      526
 Method:                           MLE   Df Model:                            4
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.2789
-Time:                        19:30:00   Log-Likelihood:                -244.24
+Time:                        19:37:08   Log-Likelihood:                -244.24
 converged:                       True   LL-Null:                       -338.68
 Covariance Type:            nonrobust   LLR p-value:                 9.200e-40
 =====================================================================================
@@ -683,7 +683,7 @@ Dep. Variable:               AtFeeder   No. Observations:                  223
 Model:                          Logit   Df Residuals:                      219
 Method:                           MLE   Df Model:                            3
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1579
-Time:                        19:30:00   Log-Likelihood:                -120.48
+Time:                        19:37:08   Log-Likelihood:                -120.48
 converged:                       True   LL-Null:                       -143.07
 Covariance Type:            nonrobust   LLR p-value:                 8.488e-10
 =====================================================================================
@@ -707,7 +707,7 @@ Dep. Variable:               AtFeeder   No. Observations:                  536
 Model:                          Logit   Df Residuals:                      531
 Method:                           MLE   Df Model:                            4
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1970
-Time:                        19:30:00   Log-Likelihood:                -266.37
+Time:                        19:37:08   Log-Likelihood:                -266.37
 converged:                       True   LL-Null:                       -331.71
 Covariance Type:            nonrobust   LLR p-value:                 2.773e-27
 =====================================================================================
@@ -730,7 +730,7 @@ Dep. Variable:               AtFeeder   No. Observations:                  283
 Model:                          Logit   Df Residuals:                      278
 Method:                           MLE   Df Model:                            4
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.3280
-Time:                        19:30:00   Log-Likelihood:                -128.20
+Time:                        19:37:08   Log-Likelihood:                -128.20
 converged:                       True   LL-Null:                       -190.78
 Covariance Type:            nonrobust   LLR p-value:                 4.194e-26
 =====================================================================================
@@ -770,7 +770,7 @@ Dep. Variable:                session   R-squared:                       0.378
 Model:                            OLS   Adj. R-squared:                  0.366
 Method:                 Least Squares   F-statistic:                     32.80
 Date:                Sat, 16 May 2026   Prob (F-statistic):           4.65e-07
-Time:                        19:30:00   Log-Likelihood:                -278.81
+Time:                        19:37:08   Log-Likelihood:                -278.81
 No. Observations:                  56   AIC:                             561.6
 Df Residuals:                      54   BIC:                             565.7
 Df Model:                           1                                         
@@ -800,7 +800,7 @@ Dep. Variable:                session   R-squared:                       0.000
 Model:                            OLS   Adj. R-squared:                 -0.019
 Method:                 Least Squares   F-statistic:                   0.01175
 Date:                Sat, 16 May 2026   Prob (F-statistic):              0.914
-Time:                        19:30:00   Log-Likelihood:                -243.68
+Time:                        19:37:08   Log-Likelihood:                -243.68
 No. Observations:                  53   AIC:                             491.4
 Df Residuals:                      51   BIC:                             495.3
 Df Model:                           1                                         
@@ -830,7 +830,7 @@ Dep. Variable:                session   R-squared:                       0.273
 Model:                            OLS   Adj. R-squared:                  0.261
 Method:                 Least Squares   F-statistic:                     23.98
 Date:                Sat, 16 May 2026   Prob (F-statistic):           6.92e-06
-Time:                        19:30:00   Log-Likelihood:                -330.74
+Time:                        19:37:08   Log-Likelihood:                -330.74
 No. Observations:                  66   AIC:                             665.5
 Df Residuals:                      64   BIC:                             669.9
 Df Model:                           1                                         
@@ -860,7 +860,7 @@ Dep. Variable:                session   R-squared:                       0.072
 Model:                            OLS   Adj. R-squared:                  0.056
 Method:                 Least Squares   F-statistic:                     4.418
 Date:                Sat, 16 May 2026   Prob (F-statistic):             0.0400
-Time:                        19:30:00   Log-Likelihood:                -282.10
+Time:                        19:37:08   Log-Likelihood:                -282.10
 No. Observations:                  59   AIC:                             568.2
 Df Residuals:                      57   BIC:                             572.4
 Df Model:                           1                                         

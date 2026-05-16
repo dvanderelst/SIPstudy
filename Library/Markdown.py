@@ -6,10 +6,13 @@ import re
 def md_to_pdf(md_path, out_path="Supplement.pdf"):
     toc = True
     number_sections = True
-    engine = "xelatex"
+    engine = "pdflatex"
     if shutil.which("pandoc") is None: raise RuntimeError("pandoc not found")
+    md_path = Path(md_path)
     cmd = ["pandoc", str(md_path), "-s", "-o", str(Path(out_path).with_suffix(".pdf")), f"--pdf-engine={engine}"]
-    cmd = cmd + ["-V", "geometry=margin=1in"]
+    # Resolve relative image paths in the markdown against the markdown's own directory.
+    cmd += [f"--resource-path={md_path.parent}"]
+    cmd += ["-V", "geometry=margin=1in"]
     if toc: cmd.append("--toc")
     if number_sections: cmd.append("--number-sections")
     subprocess.run(cmd, check=True)
