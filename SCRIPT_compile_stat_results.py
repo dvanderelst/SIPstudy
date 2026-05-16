@@ -111,6 +111,41 @@ def location_models() -> str:
     return '\n\n'.join(chunks)
 
 
+def _load_drinking_regressions():
+    with open('drinking_output/all_linear_regression_results.pck', 'rb') as f:
+        return pickle.load(f)
+
+
+def drinking_formula() -> str:
+    """R-style formula for the per-cat baseline drinking regression (phase 1, session)."""
+    results = _load_drinking_regressions()
+    any_label = next(label for label in results if label.endswith('phase_1_session'))
+    return Markdown.model_formula(results[any_label]['results'])
+
+
+def drinking_regressions() -> str:
+    """Per-cat baseline OLS regressions for in-session water consumption (phase 1)."""
+    results = _load_drinking_regressions()
+    cats = sorted({label.split('_')[0] for label in results if label.endswith('phase_1_session')})
+    chunks = []
+    for cat in cats:
+        chunks.append(f'### {cat}')
+        chunks.append(Markdown.model2code(results[f'{cat}_phase_1_session']['results']))
+    return '\n\n'.join(chunks)
+
+
+def drinking_ks_table() -> str:
+    """Per-cat × per-interval KS tests of FT vs. baseline residuals (phase 1, session)."""
+    lines = open('drinking_output/statistics.txt').readlines()
+    # File interleaves "Phase: X, Dependent Variable: Y" headers with 20 stat rows
+    # per section (4 cats x 5 intervals). The phase-1-session section is the first
+    # block: a header on line 0, then 20 rows on lines 1-20.
+    rows = [[x.strip() for x in line.strip().split(',')] for line in lines[1:21]]
+    df = pd.DataFrame(rows, columns=['Subject', 'Comparison', 'KS statistic', 'p-value'])
+    df['Comparison'] = df['Comparison'].apply(lambda x: f'Interval {x}s vs Baseline')
+    return df.to_markdown(index=False)
+
+
 GENERATORS = {
     'steps_formula': steps_formula,
     'steps_regressions': steps_regressions,
@@ -121,6 +156,9 @@ GENERATORS = {
     'location_interval_model': location_interval_model,
     'location_interval_model_formula': location_interval_model_formula,
     'location_models': location_models,
+    'drinking_formula': drinking_formula,
+    'drinking_regressions': drinking_regressions,
+    'drinking_ks_table': drinking_ks_table,
 }
 
 

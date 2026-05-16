@@ -4,18 +4,16 @@
 Library/__pycache__/
 .Rproj.user
 
-drinking_output/
-
-# track figures (.png/.pdf) under behavior_output/, ignore pickled intermediates
+# track figures (.png/.pdf) under output dirs, ignore pickled intermediates
 behavior_output/*.pck
+drinking_output/*.pck
+steps_output/*.pck
 
 manuscripts/
 
 *.csv#
 
 compiled_stats/
-
-steps_output/
 
 # scratch pad for Dieter <-> Claude communication while editing
 paper_edits_scratchpad.txt

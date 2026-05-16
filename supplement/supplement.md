@@ -37,7 +37,7 @@ Dep. Variable:                  steps   R-squared:                       0.352
 Model:                            OLS   Adj. R-squared:                  0.340
 Method:                 Least Squares   F-statistic:                     30.41
 Date:                Sat, 16 May 2026   Prob (F-statistic):           9.23e-07
-Time:                        18:28:22   Log-Likelihood:                -120.19
+Time:                        19:29:59   Log-Likelihood:                -120.19
 No. Observations:                  58   AIC:                             244.4
 Df Residuals:                      56   BIC:                             248.5
 Df Model:                           1                                         
@@ -67,7 +67,7 @@ Dep. Variable:                  steps   R-squared:                       0.072
 Model:                            OLS   Adj. R-squared:                  0.054
 Method:                 Least Squares   F-statistic:                     3.895
 Date:                Sat, 16 May 2026   Prob (F-statistic):             0.0540
-Time:                        18:28:22   Log-Likelihood:                -150.25
+Time:                        19:29:59   Log-Likelihood:                -150.25
 No. Observations:                  52   AIC:                             304.5
 Df Residuals:                      50   BIC:                             308.4
 Df Model:                           1                                         
@@ -97,7 +97,7 @@ Dep. Variable:                  steps   R-squared:                       0.017
 Model:                            OLS   Adj. R-squared:                  0.001
 Method:                 Least Squares   F-statistic:                     1.054
 Date:                Sat, 16 May 2026   Prob (F-statistic):              0.309
-Time:                        18:28:22   Log-Likelihood:                -70.141
+Time:                        19:29:59   Log-Likelihood:                -70.141
 No. Observations:                  62   AIC:                             144.3
 Df Residuals:                      60   BIC:                             148.5
 Df Model:                           1                                         
@@ -127,7 +127,7 @@ Dep. Variable:                  steps   R-squared:                       0.001
 Model:                            OLS   Adj. R-squared:                 -0.018
 Method:                 Least Squares   F-statistic:                   0.04356
 Date:                Sat, 16 May 2026   Prob (F-statistic):              0.835
-Time:                        18:28:22   Log-Likelihood:                -76.059
+Time:                        19:29:59   Log-Likelihood:                -76.059
 No. Observations:                  54   AIC:                             156.1
 Df Residuals:                      52   BIC:                             160.1
 Df Model:                           1                                         
@@ -197,7 +197,7 @@ Dep. Variable:                 Active   No. Observations:                  488
 Model:                          Logit   Df Residuals:                      484
 Method:                           MLE   Df Model:                            3
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                 0.04769
-Time:                        18:28:22   Log-Likelihood:                -288.26
+Time:                        19:29:59   Log-Likelihood:                -288.26
 converged:                       True   LL-Null:                       -302.69
 Covariance Type:            nonrobust   LLR p-value:                 2.387e-06
 =====================================================================================
@@ -219,7 +219,7 @@ Dep. Variable:                 Active   No. Observations:                  487
 Model:                          Logit   Df Residuals:                      483
 Method:                           MLE   Df Model:                            3
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                 0.03339
-Time:                        18:28:22   Log-Likelihood:                -303.90
+Time:                        19:29:59   Log-Likelihood:                -303.90
 converged:                       True   LL-Null:                       -314.40
 Covariance Type:            nonrobust   LLR p-value:                 0.0001056
 =====================================================================================
@@ -243,7 +243,7 @@ Dep. Variable:                 Active   No. Observations:                  551
 Model:                          Logit   Df Residuals:                      546
 Method:                           MLE   Df Model:                            4
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1328
-Time:                        18:28:22   Log-Likelihood:                -312.03
+Time:                        19:29:59   Log-Likelihood:                -312.03
 converged:                       True   LL-Null:                       -359.83
 Covariance Type:            nonrobust   LLR p-value:                 8.516e-20
 =====================================================================================
@@ -266,7 +266,7 @@ Dep. Variable:                 Active   No. Observations:                  324
 Model:                          Logit   Df Residuals:                      319
 Method:                           MLE   Df Model:                            4
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1456
-Time:                        18:28:22   Log-Likelihood:                -187.73
+Time:                        19:29:59   Log-Likelihood:                -187.73
 converged:                       True   LL-Null:                       -219.72
 Covariance Type:            nonrobust   LLR p-value:                 4.252e-13
 =====================================================================================
@@ -291,7 +291,7 @@ Dep. Variable:                 Active   No. Observations:                  471
 Model:                          Logit   Df Residuals:                      466
 Method:                           MLE   Df Model:                            4
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1733
-Time:                        18:28:22   Log-Likelihood:                -239.05
+Time:                        19:29:59   Log-Likelihood:                -239.05
 converged:                       True   LL-Null:                       -289.14
 Covariance Type:            nonrobust   LLR p-value:                 8.938e-21
 =====================================================================================
@@ -314,7 +314,7 @@ Dep. Variable:                 Active   No. Observations:                  229
 Model:                          Logit   Df Residuals:                      224
 Method:                           MLE   Df Model:                            4
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1054
-Time:                        18:28:22   Log-Likelihood:                -136.87
+Time:                        19:29:59   Log-Likelihood:                -136.87
 converged:                       True   LL-Null:                       -153.00
 Covariance Type:            nonrobust   LLR p-value:                 1.691e-06
 =====================================================================================
@@ -339,7 +339,7 @@ Dep. Variable:                 Active   No. Observations:                  531
 Model:                          Logit   Df Residuals:                      526
 Method:                           MLE   Df Model:                            4
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1936
-Time:                        18:28:22   Log-Likelihood:                -225.81
+Time:                        19:29:59   Log-Likelihood:                -225.81
 converged:                       True   LL-Null:                       -280.02
 Covariance Type:            nonrobust   LLR p-value:                 1.589e-22
 =====================================================================================
@@ -362,7 +362,7 @@ Dep. Variable:                 Active   No. Observations:                  280
 Model:                          Logit   Df Residuals:                      275
 Method:                           MLE   Df Model:                            4
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1746
-Time:                        18:28:22   Log-Likelihood:                -150.62
+Time:                        19:29:59   Log-Likelihood:                -150.62
 converged:                       True   LL-Null:                       -182.49
 Covariance Type:            nonrobust   LLR p-value:                 4.746e-13
 =====================================================================================
@@ -387,7 +387,7 @@ Dep. Variable:                 Active   No. Observations:                  536
 Model:                          Logit   Df Residuals:                      531
 Method:                           MLE   Df Model:                            4
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                 0.09096
-Time:                        18:28:22   Log-Likelihood:                -315.13
+Time:                        19:29:59   Log-Likelihood:                -315.13
 converged:                       True   LL-Null:                       -346.66
 Covariance Type:            nonrobust   LLR p-value:                 6.586e-13
 =====================================================================================
@@ -410,7 +410,7 @@ Dep. Variable:                 Active   No. Observations:                  283
 Model:                          Logit   Df Residuals:                      278
 Method:                           MLE   Df Model:                            4
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1142
-Time:                        18:28:22   Log-Likelihood:                -162.82
+Time:                        19:29:59   Log-Likelihood:                -162.82
 converged:                       True   LL-Null:                       -183.81
 Covariance Type:            nonrobust   LLR p-value:                 1.690e-08
 =====================================================================================
@@ -450,7 +450,7 @@ Dep. Variable:               AtFeeder   No. Observations:                 6479
 Model:                          Logit   Df Residuals:                     6469
 Method:                           MLE   Df Model:                            9
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1329
-Time:                        18:28:23   Log-Likelihood:                -3679.8
+Time:                        19:29:59   Log-Likelihood:                -3679.8
 converged:                       True   LL-Null:                       -4244.1
 Covariance Type:            nonrobust   LLR p-value:                3.310e-237
 =========================================================================================
@@ -486,7 +486,7 @@ Dep. Variable:               AtFeeder   No. Observations:                 4180
 Model:                          Logit   Df Residuals:                     4174
 Method:                           MLE   Df Model:                            5
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1881
-Time:                        18:28:23   Log-Likelihood:                -1970.0
+Time:                        19:30:00   Log-Likelihood:                -1970.0
 converged:                       True   LL-Null:                       -2426.4
 Covariance Type:            nonrobust   LLR p-value:                4.694e-195
 =====================================================================================
@@ -518,7 +518,7 @@ Dep. Variable:               AtFeeder   No. Observations:                  488
 Model:                          Logit   Df Residuals:                      484
 Method:                           MLE   Df Model:                            3
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                 0.04302
-Time:                        18:28:23   Log-Likelihood:                -177.81
+Time:                        19:30:00   Log-Likelihood:                -177.81
 converged:                       True   LL-Null:                       -185.80
 Covariance Type:            nonrobust   LLR p-value:                  0.001141
 =====================================================================================
@@ -540,7 +540,7 @@ Dep. Variable:               AtFeeder   No. Observations:                  487
 Model:                          Logit   Df Residuals:                      483
 Method:                           MLE   Df Model:                            3
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1249
-Time:                        18:28:23   Log-Likelihood:                -162.47
+Time:                        19:30:00   Log-Likelihood:                -162.47
 converged:                       True   LL-Null:                       -185.66
 Covariance Type:            nonrobust   LLR p-value:                 4.669e-10
 =====================================================================================
@@ -564,7 +564,7 @@ Dep. Variable:               AtFeeder   No. Observations:                  551
 Model:                          Logit   Df Residuals:                      546
 Method:                           MLE   Df Model:                            4
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1108
-Time:                        18:28:23   Log-Likelihood:                -291.13
+Time:                        19:30:00   Log-Likelihood:                -291.13
 converged:                       True   LL-Null:                       -327.39
 Covariance Type:            nonrobust   LLR p-value:                 6.637e-15
 =====================================================================================
@@ -587,7 +587,7 @@ Dep. Variable:               AtFeeder   No. Observations:                  324
 Model:                          Logit   Df Residuals:                      319
 Method:                           MLE   Df Model:                            4
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1681
-Time:                        18:28:23   Log-Likelihood:                -168.54
+Time:                        19:30:00   Log-Likelihood:                -168.54
 converged:                       True   LL-Null:                       -202.59
 Covariance Type:            nonrobust   LLR p-value:                 5.718e-14
 =====================================================================================
@@ -612,7 +612,7 @@ Dep. Variable:               AtFeeder   No. Observations:                  471
 Model:                          Logit   Df Residuals:                      466
 Method:                           MLE   Df Model:                            4
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.3545
-Time:                        18:28:23   Log-Likelihood:                -186.10
+Time:                        19:30:00   Log-Likelihood:                -186.10
 converged:                       True   LL-Null:                       -288.31
 Covariance Type:            nonrobust   LLR p-value:                 4.206e-43
 =====================================================================================
@@ -635,7 +635,7 @@ Dep. Variable:               AtFeeder   No. Observations:                  229
 Model:                          Logit   Df Residuals:                      224
 Method:                           MLE   Df Model:                            4
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.2429
-Time:                        18:28:23   Log-Likelihood:                -98.925
+Time:                        19:30:00   Log-Likelihood:                -98.925
 converged:                       True   LL-Null:                       -130.66
 Covariance Type:            nonrobust   LLR p-value:                 5.395e-13
 =====================================================================================
@@ -660,7 +660,7 @@ Dep. Variable:               AtFeeder   No. Observations:                  531
 Model:                          Logit   Df Residuals:                      526
 Method:                           MLE   Df Model:                            4
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.2789
-Time:                        18:28:23   Log-Likelihood:                -244.24
+Time:                        19:30:00   Log-Likelihood:                -244.24
 converged:                       True   LL-Null:                       -338.68
 Covariance Type:            nonrobust   LLR p-value:                 9.200e-40
 =====================================================================================
@@ -683,7 +683,7 @@ Dep. Variable:               AtFeeder   No. Observations:                  223
 Model:                          Logit   Df Residuals:                      219
 Method:                           MLE   Df Model:                            3
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1579
-Time:                        18:28:23   Log-Likelihood:                -120.48
+Time:                        19:30:00   Log-Likelihood:                -120.48
 converged:                       True   LL-Null:                       -143.07
 Covariance Type:            nonrobust   LLR p-value:                 8.488e-10
 =====================================================================================
@@ -707,7 +707,7 @@ Dep. Variable:               AtFeeder   No. Observations:                  536
 Model:                          Logit   Df Residuals:                      531
 Method:                           MLE   Df Model:                            4
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1970
-Time:                        18:28:23   Log-Likelihood:                -266.37
+Time:                        19:30:00   Log-Likelihood:                -266.37
 converged:                       True   LL-Null:                       -331.71
 Covariance Type:            nonrobust   LLR p-value:                 2.773e-27
 =====================================================================================
@@ -730,7 +730,7 @@ Dep. Variable:               AtFeeder   No. Observations:                  283
 Model:                          Logit   Df Residuals:                      278
 Method:                           MLE   Df Model:                            4
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.3280
-Time:                        18:28:23   Log-Likelihood:                -128.20
+Time:                        19:30:00   Log-Likelihood:                -128.20
 converged:                       True   LL-Null:                       -190.78
 Covariance Type:            nonrobust   LLR p-value:                 4.194e-26
 =====================================================================================
@@ -747,14 +747,163 @@ TimeSinceFeeding      0.0116      0.005      2.241      0.025       0.001       
 
 # Water Consumption
 
-<!-- TODO: 2–3 sentence intro: same residual-comparison approach as for step counts; baseline OLS regression of in-session water consumption (ml) on day, fitted per cat; per-interval residuals compared against baseline residuals via KS test; alpha level 0.001; note phase-1 dependent variable = "session" (in-session consumption); see AnalysisDrink for phase definitions and Citrine/Elia date cutoffs -->
+Water consumption was recorded during each experimental session (the period during which food was delivered on intervention days, or an equivalent fixed window on baseline days). The analysis reported here uses the in-session column (`session` in `data/SIP_data.csv`); a separate continuation period for Citrine and Elia ("phase 2") is computed by `AnalysisDrink.read_data` but not used in the paper. To test whether FT food delivery altered in-session water consumption beyond intrinsic baseline variation, we fit a per-cat OLS regression of session water consumption (ml) on day using baseline observations only, then compared the distribution of residuals from that fit against the residuals obtained by applying the same model to the FT-interval days. A Kolmogorov–Smirnov two-sample test was used to test whether the two distributions could be drawn from the same underlying distribution. Figure 5 (reproduced below) shows the raw daily session consumption and the fitted baseline trend for each cat.
 
-![Figure 5. Daily water consumption across baseline and FT intervals.](../drinking_output/phase_1_session.png)
+![Figure 5. Daily in-session water consumption across baseline and FT intervals.](../drinking_output/phase_1_session.png)
 
 ## Baseline regression models (phase 1, in-session consumption)
 
-<!-- INSERT: drinking_regressions -->
+The tables below give the per-cat baseline OLS regressions of in-session water consumption (ml) on day number, fit on baseline observations only. The model is:
+
+```
+Session ~ Days
+```
+
+The `Days` coefficient captures the intrinsic linear trend across the study period; the residuals from these fits are used in the Kolmogorov–Smirnov tests reported in the next subsection.
+
+### Bernie
+
+```
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                session   R-squared:                       0.378
+Model:                            OLS   Adj. R-squared:                  0.366
+Method:                 Least Squares   F-statistic:                     32.80
+Date:                Sat, 16 May 2026   Prob (F-statistic):           4.65e-07
+Time:                        19:30:00   Log-Likelihood:                -278.81
+No. Observations:                  56   AIC:                             561.6
+Df Residuals:                      54   BIC:                             565.7
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept     69.5556      8.785      7.918      0.000      51.944      87.168
+Days           1.0586      0.185      5.727      0.000       0.688       1.429
+==============================================================================
+Omnibus:                        1.685   Durbin-Watson:                   2.197
+Prob(Omnibus):                  0.431   Jarque-Bera (JB):                0.944
+Skew:                          -0.027   Prob(JB):                        0.624
+Kurtosis:                       3.634   Cond. No.                         87.3
+==============================================================================
+
+Notes:
+[1] Standard Errors assume correct specification of covariance matrix.
+```
+
+### Citrine
+
+```
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                session   R-squared:                       0.000
+Model:                            OLS   Adj. R-squared:                 -0.019
+Method:                 Least Squares   F-statistic:                   0.01175
+Date:                Sat, 16 May 2026   Prob (F-statistic):              0.914
+Time:                        19:30:00   Log-Likelihood:                -243.68
+No. Observations:                  53   AIC:                             491.4
+Df Residuals:                      51   BIC:                             495.3
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept     82.7957      6.237     13.276      0.000      70.275      95.316
+Days          -0.0150      0.138     -0.108      0.914      -0.293       0.263
+==============================================================================
+Omnibus:                        7.717   Durbin-Watson:                   1.350
+Prob(Omnibus):                  0.021   Jarque-Bera (JB):                7.990
+Skew:                          -0.589   Prob(JB):                       0.0184
+Kurtosis:                       4.494   Cond. No.                         83.6
+==============================================================================
+
+Notes:
+[1] Standard Errors assume correct specification of covariance matrix.
+```
+
+### Elia
+
+```
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                session   R-squared:                       0.273
+Model:                            OLS   Adj. R-squared:                  0.261
+Method:                 Least Squares   F-statistic:                     23.98
+Date:                Sat, 16 May 2026   Prob (F-statistic):           6.92e-06
+Time:                        19:30:00   Log-Likelihood:                -330.74
+No. Observations:                  66   AIC:                             665.5
+Df Residuals:                      64   BIC:                             669.9
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept    110.0446      8.727     12.610      0.000      92.611     127.478
+Days           0.7822      0.160      4.897      0.000       0.463       1.101
+==============================================================================
+Omnibus:                       17.497   Durbin-Watson:                   2.039
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               29.742
+Skew:                          -0.911   Prob(JB):                     3.48e-07
+Kurtosis:                       5.737   Cond. No.                         105.
+==============================================================================
+
+Notes:
+[1] Standard Errors assume correct specification of covariance matrix.
+```
+
+### Minerva
+
+```
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                session   R-squared:                       0.072
+Model:                            OLS   Adj. R-squared:                  0.056
+Method:                 Least Squares   F-statistic:                     4.418
+Date:                Sat, 16 May 2026   Prob (F-statistic):             0.0400
+Time:                        19:30:00   Log-Likelihood:                -282.10
+No. Observations:                  59   AIC:                             568.2
+Df Residuals:                      57   BIC:                             572.4
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept    129.4832      7.543     17.165      0.000     114.378     144.589
+Days          -0.3243      0.154     -2.102      0.040      -0.633      -0.015
+==============================================================================
+Omnibus:                       10.271   Durbin-Watson:                   1.880
+Prob(Omnibus):                  0.006   Jarque-Bera (JB):               15.433
+Skew:                           0.554   Prob(JB):                     0.000445
+Kurtosis:                       5.247   Cond. No.                         96.5
+==============================================================================
+
+Notes:
+[1] Standard Errors assume correct specification of covariance matrix.
+```
 
 ## Kolmogorov–Smirnov tests of FT vs. baseline residual distributions
 
-<!-- INSERT: drinking_ks_table -->
+Each row compares the distribution of residuals from the corresponding cat's baseline regression against the distribution of residuals obtained by applying that same baseline model to the FT interval named in the comparison column. A *p*-value below 0.001 indicates that the FT-interval residuals differ significantly from baseline residuals — i.e., that the intervention altered in-session water consumption beyond what would be expected from intrinsic baseline variation.
+
+| Subject   | Comparison                | KS statistic   | p-value   |
+|:----------|:--------------------------|:---------------|:----------|
+| Bernie    | Interval 60s vs Baseline  | ks = 0.821     | p = 0.004 |
+| Bernie    | Interval 120s vs Baseline | ks = 0.786     | p < 0.001 |
+| Bernie    | Interval 180s vs Baseline | ks = 0.536     | p = 0.094 |
+| Bernie    | Interval 240s vs Baseline | ks = 0.336     | p = 0.574 |
+| Bernie    | Interval 300s vs Baseline | ks = 0.500     | p = 0.371 |
+| Citrine   | Interval 60s vs Baseline  | ks = 0.430     | p = 0.281 |
+| Citrine   | Interval 120s vs Baseline | ks = 0.811     | p = 0.005 |
+| Citrine   | Interval 180s vs Baseline | ks = 0.698     | p = 0.011 |
+| Citrine   | Interval 240s vs Baseline | ks = 0.811     | p = 0.089 |
+| Citrine   | Interval 300s vs Baseline | ks = 0.962     | p < 0.001 |
+| Elia      | Interval 60s vs Baseline  | ks = 0.970     | p < 0.001 |
+| Elia      | Interval 120s vs Baseline | ks = 0.770     | p = 0.002 |
+| Elia      | Interval 180s vs Baseline | ks = 0.818     | p < 0.001 |
+| Elia      | Interval 240s vs Baseline | ks = 0.970     | p < 0.001 |
+| Elia      | Interval 300s vs Baseline | ks = 0.770     | p = 0.002 |
+| Minerva   | Interval 60s vs Baseline  | ks = 0.949     | p < 0.001 |
+| Minerva   | Interval 120s vs Baseline | ks = 0.546     | p = 0.083 |
+| Minerva   | Interval 180s vs Baseline | ks = 0.376     | p = 0.426 |
+| Minerva   | Interval 240s vs Baseline | ks = 0.407     | p = 0.339 |
+| Minerva   | Interval 300s vs Baseline | ks = 0.563     | p = 0.067 |
