@@ -74,11 +74,53 @@ def activity_models() -> str:
     return '\n\n'.join(chunks)
 
 
+def _load_location_results():
+    with open('behavior_output/piecewise_linear_location_results.pck', 'rb') as f:
+        return pickle.load(f)
+
+
+def location_baseline_vs_experimental() -> str:
+    """Categorical logit: AtFeeder ~ Subject + C(Feeder_Interval, baseline ref) + TimeSinceFeeding."""
+    return Markdown.model2code(_load_location_results()['result'])
+
+
+def location_baseline_vs_experimental_formula() -> str:
+    return Markdown.model_formula(_load_location_results()['result'])
+
+
+def location_interval_model() -> str:
+    """Continuous interval-length logit (intervention only)."""
+    return Markdown.model2code(_load_location_results()['result_interval'])
+
+
+def location_interval_model_formula() -> str:
+    return Markdown.model_formula(_load_location_results()['result_interval'])
+
+
+def location_models() -> str:
+    """Per-FT-interval piecewise logit models (first 2/3 + final 1/3) for location."""
+    results = _load_location_results()
+    chunks = []
+    for interval in [60, 120, 180, 240, 300]:
+        result = results[f'result{interval}']
+        chunks.append(f'### {interval}s interval')
+        chunks.append('**First segment (first 2/3 of interval):**')
+        chunks.append(Markdown.model2code(result['result1']))
+        chunks.append('**Second segment (final 1/3 of interval):**')
+        chunks.append(Markdown.model2code(result['result2']))
+    return '\n\n'.join(chunks)
+
+
 GENERATORS = {
     'steps_formula': steps_formula,
     'steps_regressions': steps_regressions,
     'steps_ks_table': steps_ks_table,
     'activity_models': activity_models,
+    'location_baseline_vs_experimental': location_baseline_vs_experimental,
+    'location_baseline_vs_experimental_formula': location_baseline_vs_experimental_formula,
+    'location_interval_model': location_interval_model,
+    'location_interval_model_formula': location_interval_model_formula,
+    'location_models': location_models,
 }
 
 

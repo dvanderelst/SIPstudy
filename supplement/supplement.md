@@ -37,7 +37,7 @@ Dep. Variable:                  steps   R-squared:                       0.352
 Model:                            OLS   Adj. R-squared:                  0.340
 Method:                 Least Squares   F-statistic:                     30.41
 Date:                Sat, 16 May 2026   Prob (F-statistic):           9.23e-07
-Time:                        18:24:43   Log-Likelihood:                -120.19
+Time:                        18:28:22   Log-Likelihood:                -120.19
 No. Observations:                  58   AIC:                             244.4
 Df Residuals:                      56   BIC:                             248.5
 Df Model:                           1                                         
@@ -67,7 +67,7 @@ Dep. Variable:                  steps   R-squared:                       0.072
 Model:                            OLS   Adj. R-squared:                  0.054
 Method:                 Least Squares   F-statistic:                     3.895
 Date:                Sat, 16 May 2026   Prob (F-statistic):             0.0540
-Time:                        18:24:43   Log-Likelihood:                -150.25
+Time:                        18:28:22   Log-Likelihood:                -150.25
 No. Observations:                  52   AIC:                             304.5
 Df Residuals:                      50   BIC:                             308.4
 Df Model:                           1                                         
@@ -97,7 +97,7 @@ Dep. Variable:                  steps   R-squared:                       0.017
 Model:                            OLS   Adj. R-squared:                  0.001
 Method:                 Least Squares   F-statistic:                     1.054
 Date:                Sat, 16 May 2026   Prob (F-statistic):              0.309
-Time:                        18:24:43   Log-Likelihood:                -70.141
+Time:                        18:28:22   Log-Likelihood:                -70.141
 No. Observations:                  62   AIC:                             144.3
 Df Residuals:                      60   BIC:                             148.5
 Df Model:                           1                                         
@@ -127,7 +127,7 @@ Dep. Variable:                  steps   R-squared:                       0.001
 Model:                            OLS   Adj. R-squared:                 -0.018
 Method:                 Least Squares   F-statistic:                   0.04356
 Date:                Sat, 16 May 2026   Prob (F-statistic):              0.835
-Time:                        18:24:43   Log-Likelihood:                -76.059
+Time:                        18:28:22   Log-Likelihood:                -76.059
 No. Observations:                  54   AIC:                             156.1
 Df Residuals:                      52   BIC:                             160.1
 Df Model:                           1                                         
@@ -197,7 +197,7 @@ Dep. Variable:                 Active   No. Observations:                  488
 Model:                          Logit   Df Residuals:                      484
 Method:                           MLE   Df Model:                            3
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                 0.04769
-Time:                        18:24:44   Log-Likelihood:                -288.26
+Time:                        18:28:22   Log-Likelihood:                -288.26
 converged:                       True   LL-Null:                       -302.69
 Covariance Type:            nonrobust   LLR p-value:                 2.387e-06
 =====================================================================================
@@ -219,7 +219,7 @@ Dep. Variable:                 Active   No. Observations:                  487
 Model:                          Logit   Df Residuals:                      483
 Method:                           MLE   Df Model:                            3
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                 0.03339
-Time:                        18:24:44   Log-Likelihood:                -303.90
+Time:                        18:28:22   Log-Likelihood:                -303.90
 converged:                       True   LL-Null:                       -314.40
 Covariance Type:            nonrobust   LLR p-value:                 0.0001056
 =====================================================================================
@@ -243,7 +243,7 @@ Dep. Variable:                 Active   No. Observations:                  551
 Model:                          Logit   Df Residuals:                      546
 Method:                           MLE   Df Model:                            4
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1328
-Time:                        18:24:44   Log-Likelihood:                -312.03
+Time:                        18:28:22   Log-Likelihood:                -312.03
 converged:                       True   LL-Null:                       -359.83
 Covariance Type:            nonrobust   LLR p-value:                 8.516e-20
 =====================================================================================
@@ -266,7 +266,7 @@ Dep. Variable:                 Active   No. Observations:                  324
 Model:                          Logit   Df Residuals:                      319
 Method:                           MLE   Df Model:                            4
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1456
-Time:                        18:24:44   Log-Likelihood:                -187.73
+Time:                        18:28:22   Log-Likelihood:                -187.73
 converged:                       True   LL-Null:                       -219.72
 Covariance Type:            nonrobust   LLR p-value:                 4.252e-13
 =====================================================================================
@@ -291,7 +291,7 @@ Dep. Variable:                 Active   No. Observations:                  471
 Model:                          Logit   Df Residuals:                      466
 Method:                           MLE   Df Model:                            4
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1733
-Time:                        18:24:44   Log-Likelihood:                -239.05
+Time:                        18:28:22   Log-Likelihood:                -239.05
 converged:                       True   LL-Null:                       -289.14
 Covariance Type:            nonrobust   LLR p-value:                 8.938e-21
 =====================================================================================
@@ -314,7 +314,7 @@ Dep. Variable:                 Active   No. Observations:                  229
 Model:                          Logit   Df Residuals:                      224
 Method:                           MLE   Df Model:                            4
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1054
-Time:                        18:24:44   Log-Likelihood:                -136.87
+Time:                        18:28:22   Log-Likelihood:                -136.87
 converged:                       True   LL-Null:                       -153.00
 Covariance Type:            nonrobust   LLR p-value:                 1.691e-06
 =====================================================================================
@@ -339,7 +339,7 @@ Dep. Variable:                 Active   No. Observations:                  531
 Model:                          Logit   Df Residuals:                      526
 Method:                           MLE   Df Model:                            4
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1936
-Time:                        18:24:44   Log-Likelihood:                -225.81
+Time:                        18:28:22   Log-Likelihood:                -225.81
 converged:                       True   LL-Null:                       -280.02
 Covariance Type:            nonrobust   LLR p-value:                 1.589e-22
 =====================================================================================
@@ -362,7 +362,7 @@ Dep. Variable:                 Active   No. Observations:                  280
 Model:                          Logit   Df Residuals:                      275
 Method:                           MLE   Df Model:                            4
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1746
-Time:                        18:24:44   Log-Likelihood:                -150.62
+Time:                        18:28:22   Log-Likelihood:                -150.62
 converged:                       True   LL-Null:                       -182.49
 Covariance Type:            nonrobust   LLR p-value:                 4.746e-13
 =====================================================================================
@@ -387,7 +387,7 @@ Dep. Variable:                 Active   No. Observations:                  536
 Model:                          Logit   Df Residuals:                      531
 Method:                           MLE   Df Model:                            4
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                 0.09096
-Time:                        18:24:44   Log-Likelihood:                -315.13
+Time:                        18:28:22   Log-Likelihood:                -315.13
 converged:                       True   LL-Null:                       -346.66
 Covariance Type:            nonrobust   LLR p-value:                 6.586e-13
 =====================================================================================
@@ -410,7 +410,7 @@ Dep. Variable:                 Active   No. Observations:                  283
 Model:                          Logit   Df Residuals:                      278
 Method:                           MLE   Df Model:                            4
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1142
-Time:                        18:24:44   Log-Likelihood:                -162.82
+Time:                        18:28:22   Log-Likelihood:                -162.82
 converged:                       True   LL-Null:                       -183.81
 Covariance Type:            nonrobust   LLR p-value:                 1.690e-08
 =====================================================================================
@@ -425,9 +425,9 @@ TimeSinceFeeding      0.0210      0.005      4.524      0.000       0.012       
 ```
 
 
-# Space Allocation (Time in Feeder Area)
+# Location (Time in Feeder Area)
 
-<!-- TODO: 2–3 sentence intro: logistic GLM predicting AtFeeder (Zones 5 & 6) from C(Subject) + C(Feeder_Interval, baseline as reference) + TimeSinceFeeding; second model using interval length as a continuous predictor (intervention data only) to test for systematic change across interval lengths; same two-thirds vs. final-third piecewise analysis as for activity, but for the AtFeeder outcome -->
+At each 15-second sample point the cat's location was scored using a six-zone system covering the run, plus several non-zone categories (Shelf, Fence, Litter Box, Out of View; see `Library/AnalysisBehavior.read_data` for the full mapping). For analysis the location was collapsed into a binary `AtFeeder` outcome — Feeder Area vs. Non-Feeder; the exact zone-to-category mapping is in the `loc_cat` lambda of `read_data`. Three logistic models were fit on this outcome to characterise how proximity to the feeder varied across baseline and the FT conditions.
 
 Figure 4 (reproduced below) shows the average proportion of intervals spent in the feeder area across the food-to-food interval. Open circles mark data points in the first two-thirds of each interval, and filled circles mark those in the final one-third, corresponding to the two segments fit by the piecewise models below.
 
@@ -435,15 +435,314 @@ Figure 4 (reproduced below) shows the average proportion of intervals spent in t
 
 ## Effect of FT interval (categorical, baseline as reference)
 
-<!-- INSERT: location_baseline_vs_experimental -->
+A logistic regression was fit on all observations (baseline plus all five FT intervals), pooling data across cats. FT interval was encoded as a categorical predictor with baseline as the reference level; subject was included as a fixed effect. The model is:
+
+```
+AtFeeder ~ C(Subject) + C(Feeder_Interval) + TimeSinceFeeding
+```
+
+Each `Feeder_Interval = N` coefficient tests whether time in the feeder area during that interval differs significantly from baseline.
+
+```
+                           Logit Regression Results                           
+==============================================================================
+Dep. Variable:               AtFeeder   No. Observations:                 6479
+Model:                          Logit   Df Residuals:                     6469
+Method:                           MLE   Df Model:                            9
+Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1329
+Time:                        18:28:23   Log-Likelihood:                -3679.8
+converged:                       True   LL-Null:                       -4244.1
+Covariance Type:            nonrobust   LLR p-value:                3.310e-237
+=========================================================================================
+                            coef    std err          z      P>|z|      [0.025      0.975]
+-----------------------------------------------------------------------------------------
+Intercept                -0.5430      0.056     -9.626      0.000      -0.654      -0.432
+Subject = Citrine        -0.2339      0.076     -3.089      0.002      -0.382      -0.085
+Subject = Elia            1.0726      0.079     13.653      0.000       0.919       1.227
+Subject = Minerva         1.2707      0.083     15.334      0.000       1.108       1.433
+Feeder_Interval = 60      1.8377      0.114     16.121      0.000       1.614       2.061
+Feeder_Interval = 120     0.9389      0.098      9.541      0.000       0.746       1.132
+Feeder_Interval = 180     1.0078      0.115      8.796      0.000       0.783       1.232
+Feeder_Interval = 240     0.9202      0.119      7.747      0.000       0.687       1.153
+Feeder_Interval = 300     0.7657      0.131      5.838      0.000       0.509       1.023
+TimeSinceFeeding         -0.0003      0.001     -0.463      0.644      -0.001       0.001
+=========================================================================================
+```
 
 ## Effect of interval length on time at feeder (continuous, intervention only)
 
-<!-- INSERT: location_interval_model -->
+A second logistic regression was fit on the intervention observations only (baseline excluded), treating FT interval length as a continuous predictor. This tests whether longer FT intervals are associated with systematically more or less time in the feeder area. The model is:
+
+```
+AtFeeder ~ C(Subject) + Feeder_Interval + TimeSinceFeeding
+```
+
+A significant negative slope on `Feeder_Interval` indicates that as interval length increases, cats spend less time near the feeder.
+
+```
+                           Logit Regression Results                           
+==============================================================================
+Dep. Variable:               AtFeeder   No. Observations:                 4180
+Model:                          Logit   Df Residuals:                     4174
+Method:                           MLE   Df Model:                            5
+Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1881
+Time:                        18:28:23   Log-Likelihood:                -1970.0
+converged:                       True   LL-Null:                       -2426.4
+Covariance Type:            nonrobust   LLR p-value:                4.694e-195
+=====================================================================================
+                        coef    std err          z      P>|z|      [0.025      0.975]
+-------------------------------------------------------------------------------------
+Intercept             0.4190      0.120      3.490      0.000       0.184       0.654
+Subject = Citrine     0.2379      0.097      2.463      0.014       0.049       0.427
+Subject = Elia        2.2132      0.114     19.440      0.000       1.990       2.436
+Subject = Minerva     2.4406      0.131     18.631      0.000       2.184       2.697
+Feeder_Interval      -0.0025      0.001     -4.391      0.000      -0.004      -0.001
+TimeSinceFeeding     -0.0003      0.001     -0.478      0.633      -0.002       0.001
+=====================================================================================
+```
 
 ## Logistic models per FT interval (first 2/3 and final 1/3)
 
-<!-- INSERT: location_models -->
+For each FT interval the data was split into the first two-thirds of the food-to-food interval and the final third, and a logistic regression was fit separately to each segment, using `TimeSinceFeeding` and `C(Subject)` as predictors. For the 60s interval, which contains only four sample points, the two-thirds split falls between the second and third points so the two segments are effectively halves. For the 240s final-third model, Minerva was excluded because she was at the feeder in all 57 of her observations in that segment, which caused the logit fit to diverge; her exclusion did not change the `TimeSinceFeeding` slope or *p*-value to four decimal places.
+
+For each interval below, the first table gives the logit fit for the first segment and the second table for the final segment. A positive slope on `TimeSinceFeeding` indicates that the probability of being in the feeder area rises across the segment; a negative slope indicates it falls.
+
+### 60s interval
+
+**First segment (first 2/3 of interval):**
+
+```
+                           Logit Regression Results                           
+==============================================================================
+Dep. Variable:               AtFeeder   No. Observations:                  488
+Model:                          Logit   Df Residuals:                      484
+Method:                           MLE   Df Model:                            3
+Date:                Sat, 16 May 2026   Pseudo R-squ.:                 0.04302
+Time:                        18:28:23   Log-Likelihood:                -177.81
+converged:                       True   LL-Null:                       -185.80
+Covariance Type:            nonrobust   LLR p-value:                  0.001141
+=====================================================================================
+                        coef    std err          z      P>|z|      [0.025      0.975]
+-------------------------------------------------------------------------------------
+Intercept             1.4565      0.471      3.094      0.002       0.534       2.379
+Subject = Elia        1.0688      0.329      3.248      0.001       0.424       1.714
+Subject = Minerva     1.1694      0.341      3.429      0.001       0.501       1.838
+TimeSinceFeeding     -0.0111      0.018     -0.603      0.547      -0.047       0.025
+=====================================================================================
+```
+
+**Second segment (final 1/3 of interval):**
+
+```
+                           Logit Regression Results                           
+==============================================================================
+Dep. Variable:               AtFeeder   No. Observations:                  487
+Model:                          Logit   Df Residuals:                      483
+Method:                           MLE   Df Model:                            3
+Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1249
+Time:                        18:28:23   Log-Likelihood:                -162.47
+converged:                       True   LL-Null:                       -185.66
+Covariance Type:            nonrobust   LLR p-value:                 4.669e-10
+=====================================================================================
+                        coef    std err          z      P>|z|      [0.025      0.975]
+-------------------------------------------------------------------------------------
+Intercept            -0.4107      1.021     -0.402      0.688      -2.412       1.591
+Subject = Elia        2.2374      0.410      5.457      0.000       1.434       3.041
+Subject = Minerva     1.5558      0.332      4.689      0.000       0.905       2.206
+TimeSinceFeeding      0.0238      0.019      1.237      0.216      -0.014       0.062
+=====================================================================================
+```
+
+### 120s interval
+
+**First segment (first 2/3 of interval):**
+
+```
+                           Logit Regression Results                           
+==============================================================================
+Dep. Variable:               AtFeeder   No. Observations:                  551
+Model:                          Logit   Df Residuals:                      546
+Method:                           MLE   Df Model:                            4
+Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1108
+Time:                        18:28:23   Log-Likelihood:                -291.13
+converged:                       True   LL-Null:                       -327.39
+Covariance Type:            nonrobust   LLR p-value:                 6.637e-15
+=====================================================================================
+                        coef    std err          z      P>|z|      [0.025      0.975]
+-------------------------------------------------------------------------------------
+Intercept             0.5298      0.277      1.915      0.055      -0.012       1.072
+Subject = Citrine     0.0713      0.257      0.278      0.781      -0.432       0.574
+Subject = Elia        1.0073      0.244      4.122      0.000       0.528       1.486
+Subject = Minerva     2.7981      0.488      5.737      0.000       1.842       3.754
+TimeSinceFeeding     -0.0061      0.005     -1.273      0.203      -0.015       0.003
+=====================================================================================
+```
+
+**Second segment (final 1/3 of interval):**
+
+```
+                           Logit Regression Results                           
+==============================================================================
+Dep. Variable:               AtFeeder   No. Observations:                  324
+Model:                          Logit   Df Residuals:                      319
+Method:                           MLE   Df Model:                            4
+Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1681
+Time:                        18:28:23   Log-Likelihood:                -168.54
+converged:                       True   LL-Null:                       -202.59
+Covariance Type:            nonrobust   LLR p-value:                 5.718e-14
+=====================================================================================
+                        coef    std err          z      P>|z|      [0.025      0.975]
+-------------------------------------------------------------------------------------
+Intercept            -2.7080      1.177     -2.301      0.021      -5.015      -0.402
+Subject = Citrine     0.4246      0.339      1.253      0.210      -0.240       1.089
+Subject = Elia        1.7337      0.330      5.254      0.000       1.087       2.380
+Subject = Minerva     3.0733      0.565      5.437      0.000       1.965       4.181
+TimeSinceFeeding      0.0228      0.011      2.095      0.036       0.001       0.044
+=====================================================================================
+```
+
+### 180s interval
+
+**First segment (first 2/3 of interval):**
+
+```
+                           Logit Regression Results                           
+==============================================================================
+Dep. Variable:               AtFeeder   No. Observations:                  471
+Model:                          Logit   Df Residuals:                      466
+Method:                           MLE   Df Model:                            4
+Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.3545
+Time:                        18:28:23   Log-Likelihood:                -186.10
+converged:                       True   LL-Null:                       -288.31
+Covariance Type:            nonrobust   LLR p-value:                 4.206e-43
+=====================================================================================
+                        coef    std err          z      P>|z|      [0.025      0.975]
+-------------------------------------------------------------------------------------
+Intercept            -0.3559      0.314     -1.132      0.258      -0.972       0.260
+Subject = Citrine    -1.1455      0.307     -3.734      0.000      -1.747      -0.544
+Subject = Elia        3.1282      0.487      6.423      0.000       2.174       4.083
+Subject = Minerva     3.3490      0.536      6.250      0.000       2.299       4.399
+TimeSinceFeeding      0.0058      0.004      1.525      0.127      -0.002       0.013
+=====================================================================================
+```
+
+**Second segment (final 1/3 of interval):**
+
+```
+                           Logit Regression Results                           
+==============================================================================
+Dep. Variable:               AtFeeder   No. Observations:                  229
+Model:                          Logit   Df Residuals:                      224
+Method:                           MLE   Df Model:                            4
+Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.2429
+Time:                        18:28:23   Log-Likelihood:                -98.925
+converged:                       True   LL-Null:                       -130.66
+Covariance Type:            nonrobust   LLR p-value:                 5.395e-13
+=====================================================================================
+                        coef    std err          z      P>|z|      [0.025      0.975]
+-------------------------------------------------------------------------------------
+Intercept            -1.4151      1.653     -0.856      0.392      -4.654       1.824
+Subject = Citrine     0.7878      0.408      1.930      0.054      -0.012       1.588
+Subject = Elia        3.1168      0.639      4.881      0.000       1.865       4.368
+Subject = Minerva     3.0679      0.640      4.797      0.000       1.814       4.321
+TimeSinceFeeding      0.0079      0.010      0.764      0.445      -0.012       0.028
+=====================================================================================
+```
+
+### 240s interval
+
+**First segment (first 2/3 of interval):**
+
+```
+                           Logit Regression Results                           
+==============================================================================
+Dep. Variable:               AtFeeder   No. Observations:                  531
+Model:                          Logit   Df Residuals:                      526
+Method:                           MLE   Df Model:                            4
+Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.2789
+Time:                        18:28:23   Log-Likelihood:                -244.24
+converged:                       True   LL-Null:                       -338.68
+Covariance Type:            nonrobust   LLR p-value:                 9.200e-40
+=====================================================================================
+                        coef    std err          z      P>|z|      [0.025      0.975]
+-------------------------------------------------------------------------------------
+Intercept            -0.6434      0.269     -2.391      0.017      -1.171      -0.116
+Subject = Citrine     0.7352      0.255      2.884      0.004       0.236       1.235
+Subject = Elia        2.3926      0.287      8.349      0.000       1.831       2.954
+Subject = Minerva     5.4468      1.020      5.343      0.000       3.449       7.445
+TimeSinceFeeding     -0.0005      0.003     -0.193      0.847      -0.005       0.005
+=====================================================================================
+```
+
+**Second segment (final 1/3 of interval):**
+
+```
+                           Logit Regression Results                           
+==============================================================================
+Dep. Variable:               AtFeeder   No. Observations:                  223
+Model:                          Logit   Df Residuals:                      219
+Method:                           MLE   Df Model:                            3
+Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1579
+Time:                        18:28:23   Log-Likelihood:                -120.48
+converged:                       True   LL-Null:                       -143.07
+Covariance Type:            nonrobust   LLR p-value:                 8.488e-10
+=====================================================================================
+                        coef    std err          z      P>|z|      [0.025      0.975]
+-------------------------------------------------------------------------------------
+Intercept            -1.7117      1.239     -1.381      0.167      -4.141       0.717
+Subject = Citrine     0.5725      0.340      1.685      0.092      -0.093       1.239
+Subject = Elia        2.6130      0.480      5.443      0.000       1.672       3.554
+TimeSinceFeeding      0.0077      0.006      1.287      0.198      -0.004       0.019
+=====================================================================================
+```
+
+### 300s interval
+
+**First segment (first 2/3 of interval):**
+
+```
+                           Logit Regression Results                           
+==============================================================================
+Dep. Variable:               AtFeeder   No. Observations:                  536
+Model:                          Logit   Df Residuals:                      531
+Method:                           MLE   Df Model:                            4
+Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1970
+Time:                        18:28:23   Log-Likelihood:                -266.37
+converged:                       True   LL-Null:                       -331.71
+Covariance Type:            nonrobust   LLR p-value:                 2.773e-27
+=====================================================================================
+                        coef    std err          z      P>|z|      [0.025      0.975]
+-------------------------------------------------------------------------------------
+Intercept             0.2237      0.255      0.876      0.381      -0.277       0.724
+Subject = Citrine     0.0965      0.251      0.385      0.700      -0.395       0.588
+Subject = Elia        3.2052      0.421      7.611      0.000       2.380       4.031
+Subject = Minerva     1.5448      0.286      5.400      0.000       0.984       2.105
+TimeSinceFeeding     -0.0033      0.002     -1.762      0.078      -0.007       0.000
+=====================================================================================
+```
+
+**Second segment (final 1/3 of interval):**
+
+```
+                           Logit Regression Results                           
+==============================================================================
+Dep. Variable:               AtFeeder   No. Observations:                  283
+Model:                          Logit   Df Residuals:                      278
+Method:                           MLE   Df Model:                            4
+Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.3280
+Time:                        18:28:23   Log-Likelihood:                -128.20
+converged:                       True   LL-Null:                       -190.78
+Covariance Type:            nonrobust   LLR p-value:                 4.194e-26
+=====================================================================================
+                        coef    std err          z      P>|z|      [0.025      0.975]
+-------------------------------------------------------------------------------------
+Intercept            -3.1388      1.340     -2.342      0.019      -5.765      -0.512
+Subject = Citrine    -1.4327      0.412     -3.480      0.001      -2.240      -0.626
+Subject = Elia        3.5266      0.636      5.543      0.000       2.280       4.773
+Subject = Minerva     1.0834      0.370      2.929      0.003       0.358       1.808
+TimeSinceFeeding      0.0116      0.005      2.241      0.025       0.001       0.022
+=====================================================================================
+```
 
 
 # Water Consumption
