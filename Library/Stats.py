@@ -1,11 +1,11 @@
 # from statsmodels.sandbox.regression.predstd import wls_prediction_std
-
+import statsmodels.api as sm
 from matplotlib import pyplot as plt
 import numpy as np
-import statsmodels.api as sm
-
-import statsmodels.api as sm
 import pandas as pd
+
+
+
 
 
 def regression(data, column, alpha):
@@ -28,6 +28,8 @@ def regression(data, column, alpha):
     residuals = results.resid
     predictions = results.get_prediction(X).summary_frame(alpha)
 
+    summary = results.summary()
+
     return {
         "x": x.values,
         "y": y.values,
@@ -40,6 +42,7 @@ def regression(data, column, alpha):
         "model": model,
         "results": results,
         "predictions": predictions,
+        "summary": summary
     }
 
 
