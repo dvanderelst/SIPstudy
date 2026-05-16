@@ -1,173 +1,109 @@
-import pandas as pd
+"""Assemble the supplement from templates in supplement/templates/.
+
+Each template is a markdown file with `<!-- INSERT: name -->` markers.
+For each known marker, the corresponding generator function is called
+to produce the substitution. Unrecognized markers are left in place so
+it's obvious in the output what is not yet wired up.
+
+Templates are concatenated in alphabetical order of filename, which is
+why they are prefixed 00_..., 01_..., etc.
+
+Outputs:
+  supplement/supplement.md
+  supplement/supplement.pdf
+"""
+
 import pickle
+import re
+from pathlib import Path
+
+import pandas as pd
+
 from Library import Markdown
 
-md_file = 'compiled_stats/compiled.md'
+TEMPLATE_DIR = Path('supplement/templates')
+OUTPUT_MD = Path('supplement/supplement.md')
+OUTPUT_PDF = Path('supplement/supplement.pdf')
 
-md_file_handle = open(md_file, 'w')
-
-########################
-# STEP STATISTICS
-########################
-
-step_stats_file = 'steps_output/statistics_steps.txt'
-step_stats_df = pd.read_csv(step_stats_file, sep=',', header=None)
-step_stats_df.columns = ['Subject', 'Comparison', 'KS statistics', 'p-value']
-
-regression_results_file = 'steps_output/regression.pck'
-regression_results_file_handle = open(regression_results_file, 'rb')
-regression_results = pickle.load(regression_results_file_handle)
-regression_results_file_handle.close()
-
-header = '# Step Counts Statistics\n\n'
-md_file_handle.write(header)
-
-header = '## Linear Model Results\n\n'
-md_file_handle.write(header)
-
-cats = list(regression_results.keys())
-cats.sort()
-
-for cat in cats:
-    results = regression_results[cat]
-    results = results['results']
-    header = f'### Linear Model Results for {cat}\n\n'
-    md = Markdown.model2code(results)
-    md_file_handle.write(header)
-    md_file_handle.write(md + '\n\n')
+INSERT_RE = re.compile(r'<!--\s*INSERT:\s*(\w+)\s*-->')
 
 
-header = '## Kolmogorov–Smirnov Tests\n\n'
-md = step_stats_df.to_markdown(index=False)
-md_file_handle.write(header)
-md_file_handle.write(md+ '\n\n')
+# ---------- Generators (one per <!-- INSERT: name --> marker) ----------
+
+def _load_steps_regressions():
+    with open('steps_output/regression.pck', 'rb') as f:
+        return pickle.load(f)
 
 
-########################
-# ACTIVITY STATISTICS
-########################
-
-results_file = 'behavior_output/piecewise_linear_activity_results.pck'
-results_file_handle = open(results_file, 'rb')
-activity_results = pickle.load(results_file_handle)
-results_file_handle.close()
-
-header = '# Activity Pattern Statistics\n\n'
-md_file_handle.write(header)
-
-for interval in [60, 120, 180, 240, 300]:
-    result = activity_results[f'result{interval}']
-    result_1 = result['result1']
-    result_2 = result['result2']
-
-    result_1 = Markdown.model2code(result_1)
-    result_2 = Markdown.model2code(result_2)
-
-    header = f'## Activity Pattern Results for {interval} Interval\n\n'
-    md_file_handle.write(header)
-
-    md_file_handle.write(f'### Logistic Generalized Linear Model, {interval}s, First 2/3s of interval\n\n')
-    md_file_handle.write(result_1 + '\n\n')
-    md_file_handle.write(f'### Logistic Generalized Linear Model, {interval}s, Last 1/3 of interval\n\n')
-    md_file_handle.write(result_2 + '\n\n')
+def steps_formula() -> str:
+    """R-style formula for the per-cat baseline step-count regression."""
+    results = _load_steps_regressions()
+    any_cat = next(iter(results))
+    return Markdown.model_formula(results[any_cat]['results'])
 
 
-########################
-# LOCATION STATISTICS
-########################
-
-results_file = 'behavior_output/piecewise_linear_location_results.pck'
-results_file_handle = open(results_file, 'rb')
-location_results = pickle.load(results_file_handle)
-results_file_handle.close()
-
-header = '# Space Allocation Statistics\n\n'
-md_file_handle.write(header)
-
-# For the location, we also tested whether
-# 1) The proportion of time spent at the feeder changed with feeder interval
-# 2) whether each of these differed from the baseline
-# 'result_interval,': result_interval, #-->tests effect of interval
-# 'result': result  # --> includes interval as factor, tests whether each of interval levels differs from baseline
-
-header = f'## Effect of Interval on Space Allocation\n\n'
-result_interval = location_results['result_interval']
-result_interval_md = Markdown.model2code(result_interval)
-md_file_handle.write(header)
-md_file_handle.write(result_interval_md + '\n\n')
-
-header = f'## Testing for Differences Between Baseline and Experimental Conditions\n\n'
-result = location_results['result']
-result_md = Markdown.model2code(result)
-md_file_handle.write(header)
-md_file_handle.write(result_md + '\n\n')
-
-for interval in [60, 120, 180, 240, 300]:
-    result = location_results[f'result{interval}']
-    result_1 = result['result1']
-    result_2 = result['result2']
-
-    result_1 = Markdown.model2code(result_1)
-    result_2 = Markdown.model2code(result_2)
-
-    header = f'## Location results for {interval} interval\n\n'
-    md_file_handle.write(header)
-
-    md_file_handle.write(f'### Logistic Generalized Linear Model, {interval}s, First 2/3s of interval\n\n')
-    md_file_handle.write(result_1 + '\n\n')
-    md_file_handle.write(f'### Logistic Generalized Linear Model, {interval}s, Last 1/3 of interval\n\n')
-    md_file_handle.write(result_2 + '\n\n')
-
-########################
-# DRINKING STATISTICS
-########################
-header = '# Water Consumption Statistics\n\n'
-md_file_handle.write(header)
-# The data in the paper is for phase 1, dependent var = session
-results_file = 'drinking_output/all_linear_regression_results.pck'
-results_file_handle = open(results_file, 'rb')
-results = pickle.load(results_file_handle)
-results_file_handle.close()
-phase = 1
-dependent_variable = 'session'
-for cat in cats:
-    label = f"{cat}_phase_{phase}_{dependent_variable}"
-    regression_results = results[label]
-    regression_results = regression_results['results']
-    header = f'## Linear Model for {cat}\n\n'
-    md_file_handle.write(header)
-
-    md = Markdown.model2code(regression_results)
-    md_file_handle.write(md + '\n\n')
+def steps_regressions() -> str:
+    """Per-cat baseline OLS regressions for daily step count."""
+    results = _load_steps_regressions()
+    chunks = []
+    for cat in sorted(results.keys()):
+        chunks.append(f'### {cat}')
+        chunks.append(Markdown.model2code(results[cat]['results']))
+    return '\n\n'.join(chunks)
 
 
-ks_file = 'drinking_output/statistics.txt'
-lines = open(ks_file, 'r').readlines()
-relevant_lines = lines[1:21]
-relevant_lines = [line.strip() for line in relevant_lines]
-# Split each line by commas to get 4 columns
-parsed_data = []
-for line in relevant_lines:
-    # Split by comma and strip whitespace
-    parts = [part.strip() for part in line.split(',')]
-    parsed_data.append(parts)
-
-# Create DataFrame with 4 columns
-columns = ['Subject', 'Comparison', 'KS statistics', 'p-value']
-df = pd.DataFrame(parsed_data, columns=columns)
-# Update the Comparison column to show "Interval Xs vs Baseline"
-df['Comparison'] = df['Comparison'].apply(lambda x: f"Interval {x}s vs Baseline")
-
-header = '## Kolmogorov–Smirnov Tests\n\n'
-md = df.to_markdown(index=False)
-md_file_handle.write(header)
-md_file_handle.write(md)
+def steps_ks_table() -> str:
+    """Per-cat × per-interval KS tests of FT vs. baseline residuals."""
+    df = pd.read_csv('steps_output/statistics_steps.txt', sep=',', header=None)
+    df.columns = ['Subject', 'Comparison', 'KS statistic', 'p-value']
+    return df.to_markdown(index=False)
 
 
+def activity_models() -> str:
+    """Per-FT-interval piecewise logit models (first 2/3 + final 1/3) for activity."""
+    with open('behavior_output/piecewise_linear_activity_results.pck', 'rb') as f:
+        results = pickle.load(f)
+    chunks = []
+    for interval in [60, 120, 180, 240, 300]:
+        result = results[f'result{interval}']
+        chunks.append(f'### {interval}s interval')
+        chunks.append('**First segment (first 2/3 of interval):**')
+        chunks.append(Markdown.model2code(result['result1']))
+        chunks.append('**Second segment (final 1/3 of interval):**')
+        chunks.append(Markdown.model2code(result['result2']))
+    return '\n\n'.join(chunks)
 
-########################
-# FINISHING UP
-########################
 
-md_file_handle.close()
-Markdown.md_to_pdf(md_file, out_path='compiled_stats/compiled_stats.pdf')
+GENERATORS = {
+    'steps_formula': steps_formula,
+    'steps_regressions': steps_regressions,
+    'steps_ks_table': steps_ks_table,
+    'activity_models': activity_models,
+}
+
+
+# ---------- Assembler ----------
+
+def render(text: str) -> str:
+    def replace(match):
+        name = match.group(1)
+        if name in GENERATORS:
+            return GENERATORS[name]()
+        return match.group(0)
+    return INSERT_RE.sub(replace, text)
+
+
+def main():
+    templates = sorted(TEMPLATE_DIR.glob('*.md'))
+    rendered = [render(t.read_text()) for t in templates]
+    OUTPUT_MD.write_text('\n\n'.join(rendered))
+    print(f'wrote {OUTPUT_MD}')
+    try:
+        Markdown.md_to_pdf(str(OUTPUT_MD), out_path=str(OUTPUT_PDF))
+        print(f'wrote {OUTPUT_PDF}')
+    except Exception as e:
+        print(f'skipped PDF generation: {e}')
+
+
+if __name__ == '__main__':
+    main()
