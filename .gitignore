@@ -15,3 +15,6 @@ manuscripts/
 compiled_stats/
 
 steps_output/
+
+# scratch pad for Dieter <-> Claude communication while editing
+paper_edits_scratchpad.txt
