@@ -89,7 +89,16 @@ intervals.sort()
 for index, interval in enumerate(intervals):
     selected_data = proportions.query('Feeder_Interval == @interval')
     current_color = colors[str(interval)]
-    plt.plot(selected_data['TimeSinceFeeding'], selected_data['AtFeeder'], alpha=1, label=str(interval) + ' s', linewidth=2, color=current_color, marker = '.')
+    split = interval * split_ratio
+    plt.plot(selected_data['TimeSinceFeeding'], selected_data['AtFeeder'], alpha=1, label=str(interval) + ' s', linewidth=2, color=current_color)
+    first = selected_data.query('TimeSinceFeeding <= @split')
+    last = selected_data.query('TimeSinceFeeding > @split')
+    plt.scatter(first['TimeSinceFeeding'], first['AtFeeder'], facecolors='white', edgecolors=current_color, marker='o', s=30, linewidths=1.5, zorder=3)
+    plt.scatter(last['TimeSinceFeeding'], last['AtFeeder'], color=current_color, marker='o', s=30, zorder=3)
+
+# Legend entries explaining the marker convention (neutral color, no data)
+plt.scatter([], [], facecolors='white', edgecolors='black', marker='o', s=30, linewidths=1.5, label='first 2/3 of interval')
+plt.scatter([], [], color='black', marker='o', s=30, label='final 1/3 of interval')
 
 ax = plt.gca()
 ax.set_facecolor('#F1F0EA')

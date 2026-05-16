@@ -37,7 +37,7 @@ Dep. Variable:                  steps   R-squared:                       0.352
 Model:                            OLS   Adj. R-squared:                  0.340
 Method:                 Least Squares   F-statistic:                     30.41
 Date:                Sat, 16 May 2026   Prob (F-statistic):           9.23e-07
-Time:                        17:28:14   Log-Likelihood:                -120.19
+Time:                        17:53:55   Log-Likelihood:                -120.19
 No. Observations:                  58   AIC:                             244.4
 Df Residuals:                      56   BIC:                             248.5
 Df Model:                           1                                         
@@ -67,7 +67,7 @@ Dep. Variable:                  steps   R-squared:                       0.072
 Model:                            OLS   Adj. R-squared:                  0.054
 Method:                 Least Squares   F-statistic:                     3.895
 Date:                Sat, 16 May 2026   Prob (F-statistic):             0.0540
-Time:                        17:28:14   Log-Likelihood:                -150.25
+Time:                        17:53:55   Log-Likelihood:                -150.25
 No. Observations:                  52   AIC:                             304.5
 Df Residuals:                      50   BIC:                             308.4
 Df Model:                           1                                         
@@ -97,7 +97,7 @@ Dep. Variable:                  steps   R-squared:                       0.017
 Model:                            OLS   Adj. R-squared:                  0.001
 Method:                 Least Squares   F-statistic:                     1.054
 Date:                Sat, 16 May 2026   Prob (F-statistic):              0.309
-Time:                        17:28:14   Log-Likelihood:                -70.141
+Time:                        17:53:55   Log-Likelihood:                -70.141
 No. Observations:                  62   AIC:                             144.3
 Df Residuals:                      60   BIC:                             148.5
 Df Model:                           1                                         
@@ -127,7 +127,7 @@ Dep. Variable:                  steps   R-squared:                       0.001
 Model:                            OLS   Adj. R-squared:                 -0.018
 Method:                 Least Squares   F-statistic:                   0.04356
 Date:                Sat, 16 May 2026   Prob (F-statistic):              0.835
-Time:                        17:28:14   Log-Likelihood:                -76.059
+Time:                        17:53:55   Log-Likelihood:                -76.059
 No. Observations:                  54   AIC:                             156.1
 Df Residuals:                      52   BIC:                             160.1
 Df Model:                           1                                         
@@ -178,7 +178,7 @@ Each row compares the distribution of residuals from the corresponding cat's bas
 
 # Activity Patterns Across the Food-to-Food Interval
 
-Activity was scored from video using a 15-second instantaneous time-sampling method; at each sample point the cat was classified as active (any movement or interaction) or inactive (resting or pausing). To assess how activity was allocated across each food-to-food interval, we fit two logistic regressions (`smf.logit`) per FT interval, pooling data across cats: one for the first two-thirds of the interval and one for the final third. Each model used `TimeSinceFeeding` and `C(Subject)` as predictors, and we tested whether the slope on `TimeSinceFeeding` differed significantly from zero. For the 60s interval, which contains only four sample points, the two-thirds split falls between the second and third points, so the two segments are effectively halves rather than thirds. Figure 3 (reproduced below) shows the average proportion of intervals marked as active across the food-to-food interval.
+Activity was scored from video using a 15-second instantaneous time-sampling method; at each sample point the cat was classified as active (any movement or interaction) or inactive (resting or pausing). To assess how activity was allocated across each food-to-food interval, we fit two logistic regressions (`smf.logit`) per FT interval, pooling data across cats: one for the first two-thirds of the interval and one for the final third. Each model used `TimeSinceFeeding` and `C(Subject)` as predictors, and we tested whether the slope on `TimeSinceFeeding` differed significantly from zero. For the 60s interval, which contains only four sample points, the two-thirds split falls between the second and third points, so the two segments are effectively halves rather than thirds. Figure 3 (reproduced below) shows the average proportion of intervals marked as active across the food-to-food interval. Open circles mark data points in the first two-thirds of each interval, and filled circles mark those in the final one-third, corresponding to the two segments fit by the piecewise models below.
 
 ![Figure 3. Average proportion of intervals marked as active across the food-to-food interval.](../behavior_output/activity.png)
 
@@ -197,7 +197,7 @@ Dep. Variable:                 Active   No. Observations:                  488
 Model:                          Logit   Df Residuals:                      484
 Method:                           MLE   Df Model:                            3
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                 0.04769
-Time:                        17:28:14   Log-Likelihood:                -288.26
+Time:                        17:53:55   Log-Likelihood:                -288.26
 converged:                       True   LL-Null:                       -302.69
 Covariance Type:            nonrobust   LLR p-value:                 2.387e-06
 =====================================================================================
@@ -219,7 +219,7 @@ Dep. Variable:                 Active   No. Observations:                  487
 Model:                          Logit   Df Residuals:                      483
 Method:                           MLE   Df Model:                            3
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                 0.03339
-Time:                        17:28:14   Log-Likelihood:                -303.90
+Time:                        17:53:55   Log-Likelihood:                -303.90
 converged:                       True   LL-Null:                       -314.40
 Covariance Type:            nonrobust   LLR p-value:                 0.0001056
 =====================================================================================
@@ -243,7 +243,7 @@ Dep. Variable:                 Active   No. Observations:                  551
 Model:                          Logit   Df Residuals:                      546
 Method:                           MLE   Df Model:                            4
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1328
-Time:                        17:28:14   Log-Likelihood:                -312.03
+Time:                        17:53:55   Log-Likelihood:                -312.03
 converged:                       True   LL-Null:                       -359.83
 Covariance Type:            nonrobust   LLR p-value:                 8.516e-20
 =====================================================================================
@@ -266,7 +266,7 @@ Dep. Variable:                 Active   No. Observations:                  324
 Model:                          Logit   Df Residuals:                      319
 Method:                           MLE   Df Model:                            4
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1456
-Time:                        17:28:14   Log-Likelihood:                -187.73
+Time:                        17:53:55   Log-Likelihood:                -187.73
 converged:                       True   LL-Null:                       -219.72
 Covariance Type:            nonrobust   LLR p-value:                 4.252e-13
 =====================================================================================
@@ -291,7 +291,7 @@ Dep. Variable:                 Active   No. Observations:                  471
 Model:                          Logit   Df Residuals:                      466
 Method:                           MLE   Df Model:                            4
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1733
-Time:                        17:28:14   Log-Likelihood:                -239.05
+Time:                        17:53:55   Log-Likelihood:                -239.05
 converged:                       True   LL-Null:                       -289.14
 Covariance Type:            nonrobust   LLR p-value:                 8.938e-21
 =====================================================================================
@@ -314,7 +314,7 @@ Dep. Variable:                 Active   No. Observations:                  229
 Model:                          Logit   Df Residuals:                      224
 Method:                           MLE   Df Model:                            4
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1054
-Time:                        17:28:14   Log-Likelihood:                -136.87
+Time:                        17:53:55   Log-Likelihood:                -136.87
 converged:                       True   LL-Null:                       -153.00
 Covariance Type:            nonrobust   LLR p-value:                 1.691e-06
 =====================================================================================
@@ -339,7 +339,7 @@ Dep. Variable:                 Active   No. Observations:                  531
 Model:                          Logit   Df Residuals:                      526
 Method:                           MLE   Df Model:                            4
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1936
-Time:                        17:28:14   Log-Likelihood:                -225.81
+Time:                        17:53:55   Log-Likelihood:                -225.81
 converged:                       True   LL-Null:                       -280.02
 Covariance Type:            nonrobust   LLR p-value:                 1.589e-22
 =====================================================================================
@@ -362,7 +362,7 @@ Dep. Variable:                 Active   No. Observations:                  280
 Model:                          Logit   Df Residuals:                      275
 Method:                           MLE   Df Model:                            4
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1746
-Time:                        17:28:14   Log-Likelihood:                -150.62
+Time:                        17:53:55   Log-Likelihood:                -150.62
 converged:                       True   LL-Null:                       -182.49
 Covariance Type:            nonrobust   LLR p-value:                 4.746e-13
 =====================================================================================
@@ -387,7 +387,7 @@ Dep. Variable:                 Active   No. Observations:                  536
 Model:                          Logit   Df Residuals:                      531
 Method:                           MLE   Df Model:                            4
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                 0.09096
-Time:                        17:28:14   Log-Likelihood:                -315.13
+Time:                        17:53:55   Log-Likelihood:                -315.13
 converged:                       True   LL-Null:                       -346.66
 Covariance Type:            nonrobust   LLR p-value:                 6.586e-13
 =====================================================================================
@@ -410,7 +410,7 @@ Dep. Variable:                 Active   No. Observations:                  283
 Model:                          Logit   Df Residuals:                      278
 Method:                           MLE   Df Model:                            4
 Date:                Sat, 16 May 2026   Pseudo R-squ.:                  0.1142
-Time:                        17:28:14   Log-Likelihood:                -162.82
+Time:                        17:53:55   Log-Likelihood:                -162.82
 converged:                       True   LL-Null:                       -183.81
 Covariance Type:            nonrobust   LLR p-value:                 1.690e-08
 =====================================================================================
@@ -428,6 +428,8 @@ TimeSinceFeeding      0.0210      0.005      4.524      0.000       0.012       
 # Space Allocation (Time in Feeder Area)
 
 <!-- TODO: 2–3 sentence intro: logistic GLM predicting AtFeeder (Zones 5 & 6) from C(Subject) + C(Feeder_Interval, baseline as reference) + TimeSinceFeeding; second model using interval length as a continuous predictor (intervention data only) to test for systematic change across interval lengths; same two-thirds vs. final-third piecewise analysis as for activity, but for the AtFeeder outcome -->
+
+Figure 4 (reproduced below) shows the average proportion of intervals spent in the feeder area across the food-to-food interval. Open circles mark data points in the first two-thirds of each interval, and filled circles mark those in the final one-third, corresponding to the two segments fit by the piecewise models below.
 
 ![Figure 4. Average proportion of intervals spent in the feeder area.](../behavior_output/location.png)
 
