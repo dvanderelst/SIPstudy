@@ -7,20 +7,11 @@ from Library import Settings
 
 
 split_ratio = 2/3
-last_n_sessions = 10000
 
 matplotlib.rcParams['font.family'] = 'serif'
 output_folder = 'behavior_output/'
 
 data = AnalysisBehavior.read_data()
-
-
-# Calculate increasing session number (days since first date)
-data['session_from_first'] = data.groupby(['Subject', 'Feeder_Interval'])['date'].rank(method='dense').astype(int) - 1
-# Calculate decreasing session number (days since last date)
-data['session_from_last'] = data.groupby(['Subject', 'Feeder_Interval'])['date'].rank(method='dense', ascending=False).astype(int) - 1
-# Select only the last n sessions
-data = data.query('session_from_last < @last_n_sessions')
 
 intervention_data = data.query('Intervention == True')
 baseline_data = data.query('Intervention == False')
