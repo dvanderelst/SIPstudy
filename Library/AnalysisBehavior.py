@@ -45,7 +45,7 @@ def read_data():
     return data
 
 
-def piecewise_linear_location(intervention_data, split_time, normalized=False, full=False, use_actual=True):
+def piecewise_linear_location(intervention_data, split_time, normalized=False, full=False, use_actual=True, exclude_subjects_part2=None):
     split_time = split_time * 1.0
     prediction_data = make_data(full=full)
 
@@ -79,12 +79,16 @@ def piecewise_linear_location(intervention_data, split_time, normalized=False, f
 
     # PART 2
     second_part = selected.query('TimeSinceFeeding > @split_time')
+    if exclude_subjects_part2:
+        second_part = second_part.query('Subject not in @exclude_subjects_part2')
     model = smf.logit(model_description, data=second_part)
     result2 = model.fit()
     summary2 = result2.summary()
 
     prediction_data2 = prediction_data.query('TimeSinceFeeding > @split_time')
     prediction_data2 = prediction_data2.copy()
+    if exclude_subjects_part2:
+        prediction_data2 = prediction_data2.query('Subject not in @exclude_subjects_part2')
     prediction_data2['Predicted'] = result2.predict(prediction_data2)
     prediction2 = prediction_data2.groupby('TimeSinceFeeding')['Predicted'].mean()
     prediction2 = prediction2.reset_index()

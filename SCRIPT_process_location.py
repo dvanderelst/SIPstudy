@@ -62,7 +62,13 @@ intervention300 = intervention_data.query('Feeder_Interval == 300')
 result60 = AnalysisBehavior.piecewise_linear_location(intervention60, split_time=60 * split_ratio)
 result120 = AnalysisBehavior.piecewise_linear_location(intervention120, split_time=120 * split_ratio)
 result180 = AnalysisBehavior.piecewise_linear_location(intervention180, split_time=180 * split_ratio)
-result240 = AnalysisBehavior.piecewise_linear_location(intervention240, split_time=240 * split_ratio)
+# Drop Minerva from the final-third fit only: she was at the feeder for all
+# of her observations in this segment, producing quasi-separation that prevents
+# the logit from converging. Excluding her leaves the TimeSinceFeeding slope and
+# p-value essentially unchanged but yields a properly converged model.
+result240 = AnalysisBehavior.piecewise_linear_location(
+    intervention240, split_time=240 * split_ratio,
+    exclude_subjects_part2=['Minerva'])
 result300 = AnalysisBehavior.piecewise_linear_location(intervention300, split_time=300 * split_ratio)
 
 r60p1 = FormatUtils.format_pvalue(result60['pvalue1'], result60['slope1'], subscript='1')
