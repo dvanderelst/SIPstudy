@@ -6,7 +6,8 @@ Library/__pycache__/
 
 drinking_output/
 
-behavior_output/
+# track figures (.png/.pdf) under behavior_output/, ignore pickled intermediates
+behavior_output/*.pck
 
 manuscripts/
 
