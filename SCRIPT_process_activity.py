@@ -1,3 +1,5 @@
+import numpy as np
+import pandas as pd
 import matplotlib
 import pickle
 from matplotlib import pyplot as plt
@@ -17,9 +19,12 @@ intervention_data = data.query('Intervention == True')
 baseline_data = data.query('Intervention == False')
 
 grouped = intervention_data.groupby(['Feeder_Interval', 'TimeSinceFeeding'], observed=False)
-proportions = grouped.Active.mean()
-proportions = proportions.reset_index()
+means = grouped.Active.mean().reset_index()
+counts = grouped.Active.count().reset_index()
+counts = counts.rename(columns={'Active': 'n'})
+proportions = pd.merge(means, counts, on=['Feeder_Interval', 'TimeSinceFeeding'])
 proportions = proportions.dropna()
+proportions['se'] = np.sqrt(proportions['Active'] * (1 - proportions['Active']) / proportions['n'])
 
 baseline_activity = baseline_data.Active.mean()
 intervals = intervention_data.Feeder_Interval.unique()
@@ -69,15 +74,25 @@ for index, interval in enumerate(intervals):
     selected_data = proportions.query('Feeder_Interval == @interval')
     current_color = colors[str(interval)]
     split = interval * split_ratio
-    plt.plot(selected_data['TimeSinceFeeding'], selected_data['Active'], alpha=1, label=str(interval) + ' s', linewidth=2, color=current_color)
+    # Plot transparent band for ±1 SE
+    lower = selected_data['Active'] - selected_data['se']
+    upper = selected_data['Active'] + selected_data['se']
+    plt.fill_between(selected_data['TimeSinceFeeding'], lower, upper,
+                     color=current_color, alpha=0.2, linewidth=0)
+    # Plot line on top of band
+    plt.plot(selected_data['TimeSinceFeeding'], selected_data['Active'],
+             alpha=1, label=str(interval) + ' s', linewidth=2, color=current_color)
+    # Add scatter markers for first 2/3 and final 1/3
     first = selected_data.query('TimeSinceFeeding <= @split')
     last = selected_data.query('TimeSinceFeeding > @split')
     plt.scatter(first['TimeSinceFeeding'], first['Active'], facecolors='white', edgecolors=current_color, marker='o', s=30, linewidths=1.5, zorder=3)
     plt.scatter(last['TimeSinceFeeding'], last['Active'], color=current_color, marker='o', s=30, zorder=3)
 
+from matplotlib.lines import Line2D
 # Legend entries explaining the marker convention (neutral color, no data)
-plt.scatter([], [], facecolors='white', edgecolors='black', marker='o', s=30, linewidths=1.5, label='first 2/3 of interval')
-plt.scatter([], [], color='black', marker='o', s=30, label='final 1/3 of interval')
+plt.scatter([], [], facecolors='white', edgecolors='black', marker='o', s=30, linewidths=1.5, label='First 2/3 of interval')
+plt.scatter([], [], color='black', marker='o', s=30, label='Final 1/3 of interval')
+plt.gca().add_line(Line2D([0], [0], marker='s', markerfacecolor='gray', alpha=0.2, markersize=10, color='black', linewidth=1, label='Standard Error'))
 
 
 # # # Add all the formatted p-values
