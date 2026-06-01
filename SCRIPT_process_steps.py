@@ -107,8 +107,8 @@ for plot_index, cat_name in enumerate(cats):
             statistics_line = f'{cat_name}, interval {interval}s vs Baseline, {formatted}\n'
             tests_output.write(statistics_line)
 
-    custom_legend.add_entry(label=f'Interval mean, $p$ > {alpha_level}', color='black', marker='+', linestyle='')
-    custom_legend.add_entry(label=f'Interval mean, $p$ < {alpha_level}', color='black', marker='*', linestyle='')
+    custom_legend.add_entry(label=f'Interval Mean, $p$ > {alpha_level}', color='black', marker='+', linestyle='')
+    custom_legend.add_entry(label=f'Interval Mean, $p$ < {alpha_level}', color='black', marker='*', linestyle='')
     custom_legend.add_entry(label='Baseline Regression', color='gray', marker='None', linestyle='--')
 
     Stats.plot_line(regression_result, colors['baseline'])

@@ -40,3 +40,24 @@ Minerva, 120, ks = 0.279, p = 0.785
 Minerva, 180, ks = 0.464, p = 0.311
 Minerva, 240, ks = 0.532, p = 0.102
 Minerva, 300, ks = 0.371, p = 0.445
+Phase: 1, Dependent Variable: total
+Bernie,   60, ks = 0.537, p = 0.162
+Bernie, 120, ks = 0.270, p = 0.806
+Bernie, 180, ks = 0.378, p = 0.420
+Bernie, 240, ks = 0.322, p = 0.623
+Bernie, 300, ks = 0.648, p = 0.112
+Citrine,   60, ks = 0.404, p = 0.352
+Citrine, 120, ks = 0.652, p = 0.046
+Citrine, 180, ks = 0.541, p = 0.094
+Citrine, 240, ks = 0.608, p = 0.335
+Citrine, 300, ks = 0.843, p = 0.013
+Elia,   60, ks = 0.984, p < 0.001
+Elia, 120, ks = 0.734, p = 0.014
+Elia, 180, ks = 0.984, p < 0.001
+Elia, 240, ks = 0.984, p < 0.001
+Elia, 300, ks = 0.984, p < 0.001
+Minerva,   60, ks = 0.496, p = 0.150
+Minerva, 120, ks = 0.429, p = 0.276
+Minerva, 180, ks = 0.268, p = 0.896
+Minerva, 240, ks = 0.589, p = 0.049
+Minerva, 300, ks = 0.496, p = 0.150

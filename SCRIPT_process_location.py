@@ -108,7 +108,7 @@ for index, interval in enumerate(intervals):
                      color=current_color, alpha=0.2, linewidth=0)
     # Plot line on top of band
     plt.plot(selected_data['TimeSinceFeeding'], selected_data['AtFeeder'],
-             alpha=1, label=str(interval) + ' s', linewidth=2, color=current_color)
+             alpha=1, label=str(interval) + 's', linewidth=2, color=current_color)
     # Add scatter markers for first 2/3 and final 1/3
     first = selected_data.query('TimeSinceFeeding <= @split')
     last = selected_data.query('TimeSinceFeeding > @split')

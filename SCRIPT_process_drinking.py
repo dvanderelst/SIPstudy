@@ -113,8 +113,8 @@ for phase in [1, 2]:
                     statistics_line = f'{cat_name}, {interval}, {formatted}\n'
                     tests_output.write(statistics_line)
 
-            custom_legend.add_entry(label=f'Interval mean, $p$ > {alpha_level}', color='black', marker='+', linestyle='')
-            custom_legend.add_entry(label=f'Interval mean, $p$ < {alpha_level}', color='black', marker='*', linestyle='')
+            custom_legend.add_entry(label=f'Interval Mean, $p$ > {alpha_level}', color='black', marker='+', linestyle='')
+            custom_legend.add_entry(label=f'Interval Mean, $p$ < {alpha_level}', color='black', marker='*', linestyle='')
             custom_legend.add_entry(label='Baseline Regression', color='gray', marker='None', linestyle='--')
 
             Stats.plot_line(regression_result, colors['baseline'])
@@ -125,7 +125,7 @@ for phase in [1, 2]:
 
             ax = plt.gca()
 
-            if plot_index in [0, 2]: plt.ylabel('Water consumption (ml)', fontsize=16)
+            if plot_index in [0, 2]: plt.ylabel('Water consumption (mL)', fontsize=16)
             if plot_index not in [0, 2]: ax.set_yticks([])
             if phase == 1 and plot_index in [0, 1]: ax.set_xticks([])
             plt.xlabel('Days', fontsize=18)
