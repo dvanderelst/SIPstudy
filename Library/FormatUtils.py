@@ -8,7 +8,6 @@ def format_ktest_result_apa(statistic, pvalue, alpha=0.05):
     else:
         formatted_pvalue = f"p = {pvalue:.3f}"
     formatted_output = f"ks = {statistic:.3f}, {formatted_pvalue}"
-    print(pvalue, formatted_output)
     return formatted_output
 
 
@@ -46,6 +45,6 @@ def format_ttest_result_apa(ttest_result, alpha=0.05):
     statistic = ttest_result.statistic
     pvalue = ttest_result.pvalue
     df = ttest_result.df
-    formatted_pvalue = format_pvalue(pvalue, [alpha])
+    formatted_pvalue = format_pvalue(pvalue, levels=[alpha])
     formatted_output = f"t({df:.0f}) = {statistic:.3f}, {formatted_pvalue}"
     return formatted_output

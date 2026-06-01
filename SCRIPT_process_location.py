@@ -1,7 +1,6 @@
 import numpy as np
 import pandas as pd
 import matplotlib
-import seaborn as sns
 from matplotlib import pyplot as plt
 from Library import FormatUtils
 from Library import AnalysisBehavior
